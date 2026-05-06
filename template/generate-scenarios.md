@@ -21,4 +21,4 @@ Especificação da API (YAML ou JSON)
 BDD (Dado/Quando/E/Então)
 
 ## 2. criar arquivo com cenários
-Crie um arquivo .feature com os cenários para download
+Crie um arquivo .feature com os cenários para download.
