@@ -16,4 +16,9 @@ Especificação da API (YAML ou JSON)
 - Considerar falhas externas
 
 # Formato de saída
+
+## 1. formato de cenários
 BDD (Dado/Quando/E/Então)
+
+## 2. criar arquivo com cenários
+Crie um arquivo .feature com os cenários para download

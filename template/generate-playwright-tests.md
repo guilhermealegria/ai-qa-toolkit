@@ -9,7 +9,7 @@ Gerar testes automatizados em Playwright a partir de cenários de teste (BDD).
 # Entrada esperada
 
 ## Cenários de teste (OBRIGATÓRIO)
-Formato Given / When / Then
+Formato Dado / When / Then
 
 ## Opcional
 - OpenAPI (para detalhes técnicos)
