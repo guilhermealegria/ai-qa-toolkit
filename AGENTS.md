@@ -2,6 +2,12 @@
 
 AI QA Toolkit para geração de cenários, análise de requisitos e automação de testes utilizando IA.
 
+Este repositório NÃO é o projeto de automação final.
+
+Não criar projetos Playwright, pastas tests/, pages/, actions/, services/, fixtures/, helpers/ ou data/ diretamente dentro deste repositório, exceto quando a tarefa for alterar exemplos ou templates do próprio toolkit.
+
+Projetos de automação gerados devem ser criados fora da pasta AI-QA-TOOLKIT.
+
 ---
 
 # Objetivo
@@ -50,12 +56,14 @@ Consultar:
 
 Sempre seguir esta estratégia:
 
+0. Se os inputs recebidos forem sem texto após "My request for Code:" sempre perguntar quais das opções fazer
 1. Analisar os inputs recebidos
 2. Identificar gaps, riscos e edge cases
 3. Gerar cenários de teste
-4. Gerar automação baseada nos cenários
-5. Respeitar architecture-guidelines.md
-6. Aplicar convenções do projeto
+4. Perguntar se o usário quer revisar os cenários criados antes de criar a automação
+5. Gerar automação baseada nos cenários
+6. Respeitar architecture-guidelines.md
+7. Aplicar convenções do projeto
 
 ---
 
@@ -93,7 +101,9 @@ Consultar:
 
 ---
 
-# Estrutura padrão esperada
+# Estrutura padrão esperada para projetos gerados
+
+Esta estrutura deve ser usada apenas no projeto Playwright gerado, nunca diretamente dentro do AI-QA-TOOLKIT.
 
 ```text
 tests/
@@ -103,3 +113,4 @@ services/
 helpers/
 fixtures/
 data/
+```

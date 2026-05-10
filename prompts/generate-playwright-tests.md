@@ -10,7 +10,7 @@ Gerar testes automatizados em Playwright a partir de cenários de teste.
 
 ## Obrigatório
 - Arquivo .feature
-- Cernários já criados em formato (Given/When/And/Then)
+- Cenários já criados em formato (Given/When/And/Then)
 
 ## Opcional
 - OpenAPI (para detalhes técnicos)
@@ -24,8 +24,19 @@ A linguagem deve ser definida com base na instrução do usuário:
 
 - Se especificado "TypeScript" → gerar código em TypeScript
 - Se especificado outra linguagem suportada pelo playwright → gerar código para essa linguagem suportada
-- Se não especificado → usar JavaScript por padrão
 - Se especificado linguagem não suportada pelo playwright → apresentar mensagem para usuário indicando as linguagens que o playwright suporta
+- Se não especificado → usar JavaScript por padrão
+
+---
+
+# Arquitetura padrão
+
+Se o usuário não especificar arquitetura, utilizar **Hybrid Architecture** combinando:
+- Page Object Model
+- Application Actions
+- Functional Abstractions
+
+Consultar: `architecture/architecture-guidelines.md`
 
 ---
 
@@ -53,6 +64,12 @@ Mapeamento:
 - Agrupar por funcionalidade usando `test.describe`
 - Evitar duplicação de código
 - Criar helpers quando necessário (mas manter simples)
+- Manter separação de responsabilidades:
+  - `tests/`: cenários e assertions
+  - `services/`: chamadas HTTP/API
+  - `helpers/`: payload builders, dados e utilitários
+  - `fixtures/`: setup compartilhado
+  - `actions/` e `pages/`: quando existir fluxo UI
 
 ---
 
@@ -94,6 +111,37 @@ Mapeamento:
 
 ---
 
+# Regras de qualidade obrigatórias
+
+- Cada teste deve validar no mínimo: status code, corpo e mensagens de erro relevantes.
+- Cobrir cenários negativos mapeados na etapa de geração de cenários.
+- Evitar lógica complexa dentro dos testes; extrair para services/helpers/actions.
+- Garantir independência entre testes (sem dependência de ordem de execução).
+
+---
+
+# Local de criação do projeto
+
+O projeto Playwright gerado deve ser criado fora do repositório AI-QA-TOOLKIT.
+
+Antes de criar arquivos, identificar o diretório home do usuário:
+
+- Windows: C:\Users\<usuario>\
+
+- macOS/Linux: /Users/<usuario>/ ou /home/<usuario>/
+
+Criar uma nova pasta para o projeto de automação dentro do diretório home do usuário.
+
+Exemplo:
+
+```text
+
+~/playwright-automation-project/
+
+```
+
+---
+
 # Formato de saída
 
 ## 1. Resumo
@@ -103,5 +151,8 @@ Informar:
 - Arquitetura utilizada
 
 ## 2. Estrutura sugerida
-- Crie o projeto em uma pasta na raiz da pasta do usuário
-- Crie a estrutura de pastas de acordo com a arquitetura selecionada consultando architecture-guidelines
+- Crie a estrutura de pastas de acordo com a arquitetura selecionada consultando `architecture-guidelines.md`
+
+## 3. Código
+- Gerar arquivos completos com caminhos.
+- Incluir instruções mínimas para executar (`npm install` e `npx playwright test`).
