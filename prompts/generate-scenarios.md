@@ -18,7 +18,9 @@ Especificação da API (YAML ou JSON)
 # Formato de saída
 
 ## 1. formato de cenários
-BDD (Dado/Quando/E/Então)
+- Por padrão utilizar BDD (Given/When/And/Then)
+- Utilizar estrutura step-by-step somente se for especificado
 
 ## 2. criar arquivo com cenários
-Crie um arquivo .feature com os cenários para download.
+- Crie um arquivo .feature com os cenários para download caso seja bdd
+- Crie um arquivo .xlsx com os cenários para download caso seja step-by-step
