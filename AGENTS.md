@@ -1,24 +1,29 @@
 # Projeto
 
-AI QA Toolkit para geração de cenários, análise de requisitos e automação de testes utilizando IA.
+AI QA Toolkit para geração de análise de requisitos, cenários de teste e automação Playwright com apoio de IA.
 
-Este repositório NÃO é o projeto de automação final.
+Este repositório é um toolkit de apoio para QA. Ele NÃO é o projeto final de automação.
 
-Não criar projetos Playwright, pastas tests/, pages/, actions/, services/, fixtures/, helpers/ ou data/ diretamente dentro deste repositório, exceto quando a tarefa for alterar exemplos ou templates do próprio toolkit.
+---
 
-Projetos de automação gerados devem ser criados fora da pasta AI-QA-TOOLKIT.
+# Regras obrigatórias do repositório
+
+- Não criar projetos Playwright diretamente dentro deste repositório.
+- Não criar as pastas `tests/`, `pages/`, `actions/`, `services/`, `fixtures/`, `helpers/` ou `data/` dentro deste repositório, exceto quando a tarefa for alterar exemplos, documentação ou templates do próprio toolkit.
+- Projetos de automação gerados devem ser criados fora da pasta `AI-QA-TOOLKIT`.
+- Usar este repositório como fonte de prompts, workflows, padrões arquiteturais e convenções.
 
 ---
 
 # Objetivo
 
-Gerar:
-- análise de inputs
-- cenários de teste
-- automação Playwright
-- estruturas arquiteturais sustentáveis
+Gerar artefatos de QA com clareza, rastreabilidade e foco em engenharia de testes:
 
-seguindo padrões modernos de engenharia de testes.
+- análise de inputs;
+- identificação de gaps, riscos, edge cases e premissas;
+- cenários de teste;
+- automação Playwright;
+- estruturas arquiteturais sustentáveis.
 
 ---
 
@@ -32,54 +37,57 @@ seguindo padrões modernos de engenharia de testes.
 
 # Linguagem padrão
 
-- Utilizar JavaScript por padrão
-- Utilizar outras linguagens suportadas pelo playwright apenas quando explicitamente solicitado
+- Utilizar JavaScript por padrão.
+- Utilizar TypeScript ou outras linguagens suportadas pelo Playwright apenas quando explicitamente solicitado.
 
 ---
 
 # Arquitetura padrão
 
-Se nenhuma arquitetura for especificada:
+Se nenhuma arquitetura for especificada, utilizar Hybrid Architecture combinando:
 
-- Utilizar Hybrid Architecture
-- Combinar:
-  - Page Object Model
-  - Application Actions
-  - Functional Abstractions
+- Page Object Model;
+- Application Actions;
+- Functional Abstractions.
 
-Consultar:
+Referência obrigatória:
+
 `architecture/architecture-guidelines.md`
 
 ---
 
 # Fluxo padrão de geração
 
-Sempre seguir esta estratégia:
+Seguir o workflow oficial:
 
-0. Se os inputs recebidos forem sem texto após "My request for Code:" sempre perguntar quais das opções fazer
-1. Analisar os inputs recebidos
-2. Identificar gaps, riscos e edge cases
-3. Gerar cenários de teste
-4. Perguntar se o usário quer revisar os cenários criados antes de criar a automação
-5. Gerar automação baseada nos cenários
-6. Respeitar architecture-guidelines.md
-7. Aplicar convenções do projeto
+`workflows/qa-generation-flow.md`
+
+Resumo do fluxo:
+
+0. Se os inputs recebidos forem sem texto após "My request for Code:", sempre perguntar ao usuário quais das opções deseja executar antes de prosseguir.
+1. Analisar os inputs recebidos.
+2. Identificar gaps, riscos, edge cases e premissas.
+3. Gerar cenários de teste rastreáveis.
+4. Perguntar se o usuário quer revisar os cenários antes da automação.
+5. Gerar automação somente após confirmação ou solicitação explícita.
+6. Respeitar a arquitetura definida ou a Hybrid Architecture por padrão.
+7. Aplicar as convenções do projeto.
 
 ---
 
 # Inputs suportados
 
-O projeto pode receber:
+O toolkit pode receber:
 
-- User Stories
-- Critérios de aceite
-- OpenAPI
-- Swagger
-- Figma
-- Regras de negócio
-- Logs
-- Payloads
-- Documentação técnica
+- User Stories;
+- critérios de aceite;
+- OpenAPI;
+- Swagger;
+- Figma;
+- regras de negócio;
+- logs;
+- payloads;
+- documentação técnica.
 
 ---
 
@@ -93,17 +101,9 @@ Consultar:
 
 ---
 
-# Arquitetura e convenções
-
-Consultar:
-
-- `architecture/architecture-guidelines.md`
-
----
-
 # Estrutura padrão esperada para projetos gerados
 
-Esta estrutura deve ser usada apenas no projeto Playwright gerado, nunca diretamente dentro do AI-QA-TOOLKIT.
+Esta estrutura deve ser usada apenas no projeto Playwright gerado, nunca diretamente dentro do `AI-QA-TOOLKIT`:
 
 ```text
 tests/
