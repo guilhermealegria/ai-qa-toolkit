@@ -3,5 +3,7 @@ generated-scenarios/**
 
 ## inputs reais são temporários e podem conter dados sensíveis
 inputs/*
+examples/*
+!examples/.gitkeep
 !inputs/.gitkeep
 !inputs/README.md
