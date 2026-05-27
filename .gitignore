@@ -1,2 +1,7 @@
 ## cenários de testes nunca versionar
 generated-scenarios/**
+
+## inputs reais são temporários e podem conter dados sensíveis
+inputs/*
+!inputs/.gitkeep
+!inputs/README.md

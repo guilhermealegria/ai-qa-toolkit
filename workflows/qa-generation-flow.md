@@ -12,6 +12,8 @@ Ele deve ser usado por qualquer agente ou ferramenta que trabalhe neste reposit�
 - A análise deve ser objetiva e útil para QAs debaterem com o time.
 - A automação deve ser gerada apenas a partir de cenários claros ou aprovados.
 - A regra de criar projeto Playwright fora do toolkit pertence à etapa de automação e está detalhada em `prompts/generate-playwright-tests.md`.
+- Inputs médios ou grandes devem ser armazenados preferencialmente em `inputs/` para permitir leitura seletiva, buscas por trechos relevantes e menor uso de tokens.
+- O conteúdo real de `inputs/` deve ser tratado como temporário e não versionado por padrão.
 
 ---
 
@@ -26,6 +28,18 @@ Não avançar para análise, geração de cenários ou automação sem uma inten
 ---
 
 ## 1. Analisar os inputs recebidos
+
+Quando os inputs estiverem em arquivos locais, usar preferencialmente caminhos dentro de `inputs/`.
+
+Exemplos:
+
+```text
+inputs/user-story-login.md
+inputs/swagger-pedidos.yaml
+inputs/log-erro-checkout.txt
+```
+
+Ler apenas o necessário para a análise, fazendo buscas e inspeção localizada quando o arquivo for grande.
 
 Identificar o tipo de input recebido:
 

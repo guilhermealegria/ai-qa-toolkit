@@ -13,6 +13,8 @@ Ele NÃO é o projeto final de automação.
 - Quando for necessário gerar automação, criar o projeto Playwright fora deste repositório.
 - Antes de gerar automação, criar ou receber cenários de teste e confirmar se o usuário deseja seguir para automação.
 - Não assumir informações ausentes nos inputs; registrar gaps, riscos, edge cases e premissas.
+- Preferir arquivos de entrada em `inputs/` quando o conteúdo for médio ou grande, para permitir leitura seletiva e reduzir uso de tokens.
+- Não versionar o conteúdo real de `inputs/` por padrão, pois pode conter documentação interna, dados sensíveis ou massa temporária de análise.
 
 ---
 
@@ -66,6 +68,22 @@ Usar os prompts abaixo como fonte principal:
 - `prompts/analyze-input.md`
 - `prompts/generate-scenarios.md`
 - `prompts/generate-playwright-tests.md`
+
+---
+
+# Inputs
+
+Quando o usuário fornecer documentação, contratos, payloads, logs, regras de negócio ou outros materiais suportados, usar preferencialmente:
+
+```text
+inputs/
+```
+
+Orientações:
+
+- Ler arquivos locais em `inputs/` somente conforme a necessidade da tarefa.
+- Evitar carregar arquivos inteiros no contexto quando for possível localizar trechos relevantes.
+- Usar texto colado no prompt apenas para inputs pequenos ou instruções complementares.
 
 ---
 

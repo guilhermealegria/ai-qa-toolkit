@@ -12,6 +12,8 @@ Este repositório é um toolkit de apoio para QA. Ele NÃO é o projeto final de
 - Não criar as pastas `tests/`, `pages/`, `actions/`, `services/`, `fixtures/`, `helpers/` ou `data/` dentro deste repositório, exceto quando a tarefa for alterar exemplos, documentação ou templates do próprio toolkit.
 - Projetos de automação gerados devem ser criados fora da pasta `AI-QA-TOOLKIT`.
 - Usar este repositório como fonte de prompts, workflows, padrões arquiteturais e convenções.
+- Arquivos de entrada recebidos do usuário devem ser colocados preferencialmente em `inputs/` para reduzir uso de tokens, permitindo leitura localizada e busca por trechos relevantes.
+- O conteúdo real de `inputs/` não deve ser versionado por padrão, pois pode conter documentação interna, dados sensíveis ou massa de análise temporária.
 
 ---
 
@@ -88,6 +90,13 @@ O toolkit pode receber:
 - logs;
 - payloads;
 - documentação técnica.
+
+## Padrão para arquivos de input
+
+- Preferir arquivos locais em `inputs/` quando o input for médio ou grande.
+- Usar texto direto no prompt apenas para inputs pequenos ou instruções pontuais.
+- Ao receber arquivos em `inputs/`, ler somente os trechos necessários para a tarefa e cruzar fontes quando houver mais de um arquivo.
+- Não criar automação diretamente a partir dos arquivos de input sem antes seguir o workflow oficial.
 
 ---
 

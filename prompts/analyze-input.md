@@ -38,6 +38,25 @@ Quando houver múltiplos inputs, cruze as informações e destaque conflitos ent
 
 ---
 
+# Origem dos inputs
+
+Os inputs podem chegar como texto no prompt, arquivo anexado ou arquivo local.
+
+Quando houver arquivos locais, preferir o diretório:
+
+```text
+inputs/
+```
+
+Orientações:
+
+- Para arquivos médios ou grandes, ler apenas os trechos necessários para a análise.
+- Usar busca por termos, endpoints, critérios, campos, status codes ou mensagens antes de carregar conteúdo extenso.
+- Quando houver múltiplos arquivos em `inputs/`, cruzar as informações e indicar conflitos ou lacunas entre as fontes.
+- Não tratar a pasta `inputs/` como projeto final de automação.
+
+---
+
 # Instruções gerais
 
 - Identifique o(s) tipo(s) de input recebido(s).
