@@ -74,7 +74,17 @@ Não inventar comportamento ausente no input.
 
 ---
 
-## 3. Gerar cenários de teste rastreáveis
+## 3. Definir Test Repository do Xray
+
+Antes de gerar arquivos para upload no Xray, identificar se o usuário informou um destino para o Test Repository.
+
+Seguir a regra detalhada definida em:
+
+`prompts/generate-scenarios.md`
+
+---
+
+## 4. Gerar cenários de teste rastreáveis
 
 Gerar cenários cobrindo:
 
@@ -92,7 +102,7 @@ Usar como referência:
 
 ---
 
-## 4. Perguntar se o usuário quer revisar os cenários
+## 5. Perguntar se o usuário quer revisar os cenários
 
 Antes de gerar automação, perguntar:
 
@@ -102,7 +112,7 @@ Se o usuário pedir somente análise ou somente cenários, não avançar automat
 
 ---
 
-## 5. Gerar automação Playwright quando aprovado
+## 6. Gerar automação Playwright quando aprovado
 
 Gerar automação somente quando:
 
@@ -116,7 +126,7 @@ Usar como referência:
 
 ---
 
-## 6. Aplicar arquitetura e convenções
+## 7. Aplicar arquitetura e convenções
 
 Se o usuário não especificar arquitetura, aplicar Hybrid Architecture:
 
@@ -130,7 +140,7 @@ Usar como referência:
 
 ---
 
-## 7. Entregar resultado de forma clara
+## 8. Entregar resultado de forma clara
 
 Ao finalizar, informar:
 

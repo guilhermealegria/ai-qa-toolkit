@@ -69,11 +69,12 @@ Resumo do fluxo:
 0. Se os inputs recebidos forem sem texto após "My request for Code:", sempre perguntar ao usuário quais das opções deseja executar antes de prosseguir.
 1. Analisar os inputs recebidos.
 2. Identificar gaps, riscos, edge cases e premissas.
-3. Gerar cenários de teste rastreáveis.
-4. Perguntar se o usuário quer revisar os cenários antes da automação.
-5. Gerar automação somente após confirmação ou solicitação explícita.
-6. Respeitar a arquitetura definida ou a Hybrid Architecture por padrão.
-7. Aplicar as convenções do projeto.
+3. Definir o Test Repository do Xray quando houver geração de CSV; se o usuário não informar, gerar um nome automático coerente com o input.
+4. Gerar cenários de teste rastreáveis.
+5. Perguntar se o usuário quer revisar os cenários antes da automação.
+6. Gerar automação somente após confirmação ou solicitação explícita.
+7. Respeitar a arquitetura definida ou a Hybrid Architecture por padrão.
+8. Aplicar as convenções do projeto.
 
 ---
 

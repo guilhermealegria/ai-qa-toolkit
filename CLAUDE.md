@@ -18,6 +18,17 @@ Ele NÃO é o projeto final de automação.
 
 ---
 
+# Execução de comandos
+
+- Antes de executar qualquer comando no terminal, identificar o shell ativo informado pelo ambiente, pela IDE ou pelo contexto da sessão.
+- Adaptar a sintaxe dos comandos ao shell ativo. Se o terminal for PowerShell, usar comandos e sintaxe de PowerShell.
+- Não assumir Bash, Linux ou WSL por padrão.
+- Evitar comandos com sintaxe exclusiva de Bash, como `&&`, `||`, `export`, `source`, `grep`, `sed`, `awk`, redirecionamentos ou expansões específicas, quando o shell ativo for PowerShell.
+- Quando houver dúvida sobre o shell ativo, verificar primeiro com um comando compatível ou perguntar ao usuário antes de executar comandos dependentes do shell.
+- Em ambiente Windows com PowerShell, preferir cmdlets como `Get-ChildItem`, `Get-Content`, `Select-String`, `Set-Location`, `$env:VAR = "valor"` e `Remove-Item` com cuidado explícito.
+
+---
+
 # Stack padrão
 
 - Playwright
@@ -53,11 +64,12 @@ Resumo:
 0. Se os inputs recebidos forem sem texto após "My request for Code:", sempre perguntar ao usuário quais das opções deseja executar antes de prosseguir.
 1. Analisar os inputs recebidos.
 2. Identificar gaps, riscos, edge cases e premissas.
-3. Gerar cenários de teste rastreáveis.
-4. Perguntar se o usuário quer revisar os cenários antes da automação.
-5. Gerar automação somente após confirmação ou solicitação explícita.
-6. Aplicar a arquitetura definida ou a arquitetura padrão.
-7. Entregar resumo claro do que foi gerado.
+3. Definir o Test Repository do Xray quando houver geração de CSV; se o usuário não informar, gerar um nome automático coerente com o input.
+4. Gerar cenários de teste rastreáveis.
+5. Perguntar se o usuário quer revisar os cenários antes da automação.
+6. Gerar automação somente após confirmação ou solicitação explícita.
+7. Aplicar a arquitetura definida ou a arquitetura padrão.
+8. Entregar resumo claro do que foi gerado.
 
 ---
 

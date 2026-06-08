@@ -40,11 +40,39 @@ Para reduzir uso de tokens:
 - Incluir edge cases e validações de contrato (status, schema e campos obrigatórios).
 - Considerar falhas externas (ex.: auth inválida, timeout, indisponibilidade e conflitos).
 - Garantir rastreabilidade por endpoint/critério em cada cenário.
+- Antes de gerar CSV para Xray, definir o destino do Test Repository conforme a seção "Definição do Test Repository para Xray".
+
+## Definição do Test Repository para Xray
+
+Identificar se o usuário informou um destino para o Test Repository no prompt ou nos metadados do pedido.
+
+O destino pode aparecer como:
+
+```text
+Repositório Xray: Nome do Repositório
+Test Repository: Nome do Repositório
+Test Repository Path: Pasta/Subpasta
+```
+
+Regras:
+
+- Se o usuário informar o destino, usar exatamente o valor indicado na coluna `Test Repository` do CSV.
+- Se o usuário não informar o destino, gerar automaticamente um nome curto, funcional e rastreável.
+- O nome automático deve priorizar, nesta ordem:
+  1. nome do produto, sistema ou API;
+  2. módulo;
+  3. funcionalidade principal;
+  4. domínio de negócio.
+- Não usar dados sensíveis, nomes de pessoas, tokens, IDs internos, payloads reais ou valores temporários no nome.
+- Usar o mesmo destino para todos os cenários quando o input tratar uma única funcionalidade, API ou módulo.
+- Quando o input cobrir módulos claramente diferentes, pode ser usado caminho com `/` para organizar folders/subfolders no Xray.
+- Registrar no resultado qual Test Repository foi usado ou gerado automaticamente.
 
 # Formato de saída
 
 ## 1. formato de cenários
-- Por padrão utilizar BDD (Given/When/And/Then)
+- Os cenários devem ser criados em português
+- Por padrão utilizar BDD com as palavras chaves em inglês (Given/When/And/Then)
 - Utilizar estrutura step-by-step somente se for especificado
 
 ## 2. criar arquivo com cenários
@@ -65,7 +93,7 @@ Regras para o CSV:
 - Manter o cabeçalho no mesmo formato do exemplo:
 
 ```csv
-TestID;Test type;Summary;Description;Priority;Action;Data;Expected Result;Gherkin definition;Test Repository,,
+TestID;Test type;Summary;Description;Priority;Action;Data;Expected Result;Gherkin definition;Test Repository
 ```
 
 - Criar uma linha por cenário.
@@ -75,7 +103,7 @@ TestID;Test type;Summary;Description;Priority;Action;Data;Expected Result;Gherki
 - Preencher `Priority` com `High`, `Medium` ou `Low`, conforme risco e criticidade.
 - Deixar `Action`, `Data` e `Expected Result` vazios para cenários Cucumber, mantendo os separadores.
 - Preencher `Gherkin definition` com o cenário em Given/When/And/Then.
-- Preencher `Test Repository` quando houver contexto de projeto, módulo ou funcionalidade; caso contrário, usar um nome funcional coerente com o input.
+- Preencher `Test Repository` com o destino definido na seção "Definição do Test Repository para Xray".
 - Não incluir dados sensíveis no CSV.
 
 ## 4. saída obrigatória
@@ -84,5 +112,6 @@ Apresentar nesta ordem:
 2. Gaps/riscos/edge cases identificados
 3. Cenários de teste
 4. Arquivo `.feature` gerado ou conteúdo sugerido
-5. Arquivo `.csv` para upload no Xray, quando aplicável
-6. Pergunta de confirmação: "Você quer revisar os cenários antes da automação?"
+5. Test Repository usado no Xray
+6. Arquivo `.csv` para upload no Xray, quando aplicável
+7. Pergunta de confirmação: "Você quer revisar os cenários antes da automação?"
