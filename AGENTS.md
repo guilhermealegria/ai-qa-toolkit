@@ -71,8 +71,8 @@ Resumo do fluxo:
 2. Identificar gaps, riscos, edge cases e premissas.
 3. Definir o Test Repository do Xray quando houver geração de CSV; se o usuário não informar, gerar um nome automático coerente com o input.
 4. Gerar cenários de teste rastreáveis.
-5. Perguntar se o usuário quer revisar os cenários antes da automação.
-6. Gerar automação somente após confirmação ou solicitação explícita.
+5. Verificar o escopo e a autorização conforme a etapa 5 do workflow; respeitar revisões solicitadas e não repetir confirmações já dadas.
+6. Gerar automação somente no escopo solicitado ou autorizado, com cenários e prontidão conforme a etapa 6 do workflow. Cenários aprovados, por si só, não autorizam implementação.
 7. Respeitar a arquitetura definida ou a Hybrid Architecture por padrão.
 8. Aplicar as convenções do projeto.
 
@@ -114,6 +114,8 @@ Consultar:
 # Estrutura padrão esperada para projetos gerados
 
 Esta estrutura deve ser usada apenas no projeto Playwright gerado, nunca diretamente dentro do `AI-QA-TOOLKIT`:
+
+Ela representa as camadas disponíveis. Criar somente as necessárias ao projeto, conforme `architecture/architecture-guidelines.md`; projetos apenas de API não precisam de `pages/`, e `actions/` também pode compor jornadas de API.
 
 ```text
 tests/

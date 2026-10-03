@@ -5,5 +5,6 @@ generated-scenarios/**
 inputs/*
 examples/*
 !examples/.gitkeep
+!examples/xray-cucumber.csv
 !inputs/.gitkeep
 !inputs/README.md

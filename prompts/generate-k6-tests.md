@@ -9,7 +9,7 @@ Este prompt implementa os tipos **Smoke, Load, Stress, Soak, Spike e Breakpoint*
 - Receba os requisitos, cenários, hipóteses registradas, critérios por operação/fase e o projeto de destino.
 - Siga as etapas de análise, gaps, cenários e revisão de [qa-generation-flow.md](../workflows/qa-generation-flow.md).
 - Se o pedido for apenas planejamento ou cenários, use o prompt de planejamento e não gere scripts automaticamente.
-- Antes de automatizar, pergunte se o usuário quer revisar os cenários, salvo solicitação explícita de implementação ou aprovação já registrada.
+- Para automatizar, aplique as condições de escopo, autorização e prontidão das etapas 5 e 6 do [workflow](../workflows/qa-generation-flow.md). Respeite revisão solicitada ainda pendente e não repita autorização já dada. Cenários aprovados, por si só, não autorizam implementação.
 - Se faltarem decisões que afetem carga, destino, duração ou aceite, identifique as lacunas e avance nas partes independentes. Não substitua requisitos ausentes pelos padrões de um template.
 - Prefira inputs extensos em `inputs/`, com leitura localizada, sem versionar seu conteúdo real por padrão.
 

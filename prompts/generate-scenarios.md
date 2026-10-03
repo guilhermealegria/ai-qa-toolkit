@@ -18,6 +18,8 @@ Você pode receber um ou mais dos seguintes inputs suportados pelo toolkit:
 
 Quando houver múltiplas fontes, cruzar as informações e destacar conflitos, gaps e premissas antes dos cenários.
 
+Também podem ser recebidos uma análise anterior ou cenários existentes para complementar ou revisar. Reutilizar decisões e identificadores já disponíveis. Se faltarem informações para definir um resultado esperado, registrar a pendência sem inventar comportamento.
+
 ## Origem dos inputs
 
 Os inputs podem chegar como texto no prompt, arquivo anexado ou arquivo local.
@@ -70,48 +72,55 @@ Regras:
 
 # Formato de saída
 
-## 1. formato de cenários
-- Os cenários devem ser criados em português
-- Por padrão utilizar BDD com as palavras chaves em inglês (Given/When/And/Then)
-- Utilizar estrutura step-by-step somente se for especificado
+## 1. Contrato dos cenários funcionais
 
-## 2. criar arquivo com cenários
-- Se for BDD, gerar conteúdo em `.feature`.
-- Se for BDD, gerar também um arquivo `.csv` para upload dos cenários no Xray.
-- Se for step-by-step, gerar conteúdo tabular pronto para `.xlsx`.
-- Não adicionar o arquivo no projeto final de automação.
+- Criar cenários em português; por padrão, usar BDD com palavras-chave em inglês (Given/When/And/Then).
+- Usar step-by-step quando solicitado. Preservar o formato dos cenários recebidos para revisão ou complemento, salvo pedido de conversão.
+- Cada cenário deve conter as informações abaixo, independentemente do formato. Este contrato se aplica a cenários funcionais; o planejamento de desempenho possui sua própria ficha quantitativa.
 
-## 3. arquivo CSV para Xray
+| Informação | Conteúdo esperado |
+| --- | --- |
+| Identificador e título | ID estável e título que descreva o comportamento; preservar IDs existentes e atribuir IDs locais quando ausentes. |
+| Origem | Requisito, critério, endpoint ou trecho de documento que fundamenta o cenário. Registrar quando a fonte estiver ausente. |
+| Pré-condições | Estado inicial, permissões, dependências e preparação necessária; indicar quando não se aplicarem. |
+| Dados | Entradas necessárias ou referência à massa, sem expor dados sensíveis. |
+| Ações | Passos ordenados da interação ou operação. |
+| Resultados esperados | Comportamentos observáveis e verificáveis, ligados às ações pertinentes. |
+| Pendências e premissas | Lacunas e hipóteses explícitas; indicar quando impedirem a implementação do cenário. |
 
-Quando gerar cenários em BDD, criar também um CSV compatível com importação no Xray usando como referência:
+Em BDD, representar contexto, ações e resultados nos passos; usar tags ou comentários para identificação e origem e registrar pendências junto ao cenário. Não apresentar comportamento ainda indefinido como critério confirmado.
 
-`examples/Importação_TC Cucumber_Exemplo(in).csv`
+Em step-by-step, usar uma linha por passo, com colunas `ID`, `Título`, `Origem`, `Pré-condições`, `Passo`, `Ação`, `Dados`, `Resultado esperado` e `Pendências/Premissas`. Manter o ID em todas as linhas do cenário e preservar a ordem dos passos. Não tratar cada linha como um cenário independente.
 
-Regras para o CSV:
+## 2. Artefatos e entrega
 
-- Usar separador `;`.
-- Manter o cabeçalho no mesmo formato do exemplo:
+| Formato | Entrega padrão | Variações solicitadas |
+| --- | --- | --- |
+| BDD | Arquivo `.feature` e CSV para Xray conforme a seção 3. | Respeitar pedidos de somente conteúdo, de revisão ou de formatos específicos, sem gerar exportações adicionais não desejadas. |
+| Step-by-step | Tabela com as colunas da seção 1, apresentada na resposta. | Quando solicitado arquivo de planilha, gerar um `.xlsx` real com a mesma estrutura. Não aplicar o CSV Cucumber a cenários step-by-step. |
 
-```csv
-TestID;Test type;Summary;Description;Priority;Action;Data;Expected Result;Gherkin definition;Test Repository
-```
+- Não adicionar os artefatos de cenários ao projeto final de automação. A automação pode consumir esses cenários sem copiar os arquivos para o projeto.
+- Usar o destino de artefatos informado ou uma convenção já definida no workspace; se não houver destino inequívoco, esclarecê-lo antes de gravar os arquivos e avançar no conteúdo independente dessa decisão.
+- Informar o caminho ou link de cada arquivo efetivamente criado. Conteúdo na resposta deve ser identificado como conteúdo, não como arquivo gerado.
+- Uma tabela Markdown ou um CSV renomeado não constitui um arquivo `.xlsx`.
+- Se a criação de um arquivo solicitado estiver indisponível, informar a limitação e apresentar o conteúdo disponível, deixando explícito qual artefato permanece pendente.
 
-- Criar uma linha por cenário.
-- Preencher `Test type` com `Cucumber`.
-- Preencher `Summary` com um título curto e rastreável do cenário.
-- Preencher `Description` com uma descrição objetiva do cenário.
-- Preencher `Priority` com `High`, `Medium` ou `Low`, conforme risco e criticidade.
-- Deixar `Action`, `Data` e `Expected Result` vazios para cenários Cucumber, mantendo os separadores.
-- Preencher `Gherkin definition` com o cenário em Given/When/And/Then.
-- Preencher `Test Repository` com o destino definido na seção "Definição do Test Repository para Xray".
-- Não incluir dados sensíveis no CSV.
+## 3. CSV para Xray
+
+Quando a exportação BDD se aplicar, seguir o [contrato CSV do toolkit](../references/xray-csv-contract.md) e o [exemplo fictício versionado](../examples/xray-cucumber.csv).
+
+- Preservar as dez colunas do contrato, um registro lógico por cenário e os mesmos IDs usados nos demais artefatos.
+- Usar o destino definido na seção "Definição do Test Repository para Xray".
+- Conferir a serialização e o conteúdo conforme a referência antes de entregar.
+- Informar o perfil usado e as pendências de configuração do importador. O perfil documentado usa Xray Cloud; se a edição não for informada, entregar com essa premissa explícita. Para outra edição ou versão, conferir o mapeamento aplicável sem prometer compatibilidade automática.
+- Distinguir validação local de importação real. Gerar CSV não autoriza enviá-lo ao Xray.
 
 ## 4. saída obrigatória
 Apresentar nesta ordem:
 1. Resumo do input analisado
 2. Gaps/riscos/edge cases identificados
 3. Cenários de teste
-4. Arquivo `.feature` gerado ou conteúdo sugerido
-5. Test Repository usado no Xray
-6. Arquivo `.csv` para upload no Xray, quando aplicável
-7. Pergunta de confirmação: "Você quer revisar os cenários antes da automação?"
+4. Artefatos conforme o formato e o pedido: caminhos dos arquivos criados ou conteúdo apresentado, distinguindo entregas concluídas e pendentes
+5. Test Repository usado no Xray e CSV produzido, somente quando essa exportação se aplicar
+6. Pendências que afetem a implementação dos cenários
+7. Próximo passo conforme as [condições de escopo e autorização do workflow](../workflows/qa-generation-flow.md#5-verificar-o-escopo-e-a-autorização-para-automação): encerrar quando o pedido se limitar a cenários, aguardar revisão solicitada ou continuar a automação já autorizada. Perguntar sobre a transição somente quando houver intenção de continuar e a próxima etapa estiver indefinida.
