@@ -13,7 +13,17 @@ Ele deve ser usado por qualquer agente ou ferramenta que trabalhe neste reposit�
 - A automação deve estar no escopo solicitado ou autorizado e partir de cenários claros, seguindo as condições das etapas 5 e 6.
 - Projetos executáveis devem ficar fora do toolkit, conforme os prompts de implementação da ferramenta escolhida.
 - Inputs médios ou grandes devem ser armazenados preferencialmente em `inputs/` para permitir leitura seletiva, buscas por trechos relevantes e menor uso de tokens.
-- O conteúdo real de `inputs/` deve ser tratado como temporário e não versionado por padrão.
+- O conteúdo real de `inputs/` deve ser tratado como temporário e não versionado por padrão, conforme a seção "Artefatos, privacidade e versionamento".
+
+---
+
+# Locais e resolução de caminhos
+
+Regras na fonte única [locais, artefatos, privacidade e versionamento](../shared/artifacts-and-paths.md): três locais (recursos do toolkit, workspace de inputs e artefatos, projeto de automação). Nos arquivos de entrada na raiz (`AGENTS.md`, `CLAUDE.md`), os caminhos são relativos à raiz do toolkit.
+
+## Artefatos, privacidade e versionamento
+
+Destino dos artefatos, itens não versionados por padrão, exemplos fictícios, projeto consumidor e distribuição: ver [fonte única](../shared/artifacts-and-paths.md#artefatos-privacidade-e-versionamento).
 
 ---
 
@@ -23,7 +33,7 @@ Aplicar somente as etapas pertinentes ao pedido, reutilizando análises, cenári
 
 | Objetivo solicitado | Referência principal | Entrega e limite |
 | --- | --- | --- |
-| Analisar documentação e testabilidade | [Análise de inputs](../prompts/analyze-input.md) | Diagnóstico; não iniciar implementação automaticamente. |
+| Analisar documentação e testabilidade | [Análise de inputs](../skills/qa-analysis/SKILL.md) | Diagnóstico; não iniciar implementação automaticamente. |
 | Escrever ou revisar cenários funcionais | [Cenários funcionais](../prompts/generate-scenarios.md) | Cenários e exportações pertinentes ao pedido. |
 | Automatizar testes funcionais de API/UI | [Playwright](../prompts/generate-playwright-tests.md) | Implementação a partir de cenários, conforme etapas 5 e 6. |
 | Levantar requisitos ou escrever cenários de desempenho | [Planejamento de desempenho](../prompts/plan-non-functional-tests.md) | Requisitos mensuráveis e cenários independentes de ferramenta; sem scripts por padrão. |
@@ -32,11 +42,9 @@ Aplicar somente as etapas pertinentes ao pedido, reutilizando análises, cenári
 
 Para pedidos mistos, manter rastreabilidade comum, mas usar os critérios e formatos próprios de cada objetivo. Um contrato de API pode alimentar ambos os planejamentos; sua presença não determina a ferramenta. Para outra ferramenta explicitamente escolhida, preservar a especificação de desempenho e consultar sua documentação na implementação, sem substituir a escolha por k6. Planejamento de desempenho não representa cobertura completa de segurança, acessibilidade ou outros atributos não funcionais.
 
-## 0. Tratar request vazio
+## 0. Tratar pedido sem intenção definida
 
-Se os inputs recebidos forem sem texto após "My request for Code:", sempre perguntar ao usuário quais das opções deseja executar antes de prosseguir.
-
-Não avançar para análise, geração de cenários ou automação sem uma intenção mínima do usuário.
+Regra na skill de coordenação: [identificar a intenção](../skills/qa-flow/SKILL.md#1-identificar-a-intenção). Preserva o caso de inputs sem texto após "My request for Code:", prevalece o objetivo já definido na conversa e, sem intenção identificável, pergunta qual tarefa executar.
 
 ---
 
@@ -69,7 +77,7 @@ Identificar o tipo de input recebido:
 
 Usar como referência:
 
-`prompts/analyze-input.md`
+[Análise de inputs](../skills/qa-analysis/SKILL.md)
 
 ---
 
@@ -98,7 +106,7 @@ Esta etapa se aplica somente quando a exportação estiver no escopo. Não exigi
 
 Seguir a regra detalhada definida em:
 
-`prompts/generate-scenarios.md`
+[Geração de cenários](../prompts/generate-scenarios.md)
 
 ---
 
@@ -122,37 +130,13 @@ Para desempenho, usar a matriz de requisitos e a ficha de cenário de [planejame
 
 ## 5. Verificar o escopo e a autorização para automação
 
-Esta seção é a referência central para a transição de cenários para implementação, inclusive nos prompts de Playwright e k6.
-
-- Se o pedido for somente análise, planejamento, cenários ou revisão, entregar essa etapa sem avançar para automação nem exigir uma decisão sobre ela.
-- Se o usuário já solicitou explicitamente a automação ou autorizou essa transição na conversa, prosseguir dentro do escopo autorizado, sem pedir a mesma confirmação novamente.
-- Se o usuário pediu para revisar os cenários antes da implementação, entregar os cenários e aguardar essa revisão, mesmo que a automação faça parte do pedido completo.
-- Quando houver intenção de continuar o fluxo, mas a próxima etapa estiver indefinida, perguntar: `Você quer revisar os cenários ou seguir para a automação?`
-- Aprovar cenários ou fornecer cenários já aprovados não autoriza, por si só, implementar. Interpretar a resposta conforme o pedido e a conversa: uma aprovação pode liberar uma revisão pendente de uma automação já solicitada, mas não ampliar um pedido limitado a cenários.
-- Respeitar restrições posteriores do usuário e não refazer perguntas já respondidas.
-
-Exemplos de aplicação:
-
-| Pedido ou contexto | Próximo passo |
-| --- | --- |
-| “Gere apenas os cenários.” | Entregar cenários e encerrar a etapa. |
-| “Gere cenários e automatize em Playwright.” | Analisar, gerar cenários e implementar, observando a prontidão da etapa 6. |
-| “Automatize estes cenários aprovados.” | Implementar sem repetir a confirmação. |
-| “Revise estes cenários aprovados.” | Revisar, sem implementar. |
-| “Gere cenários e automação, mas quero revisar os cenários primeiro.” | Entregar cenários e aguardar a revisão; sua aprovação libera a implementação já solicitada. |
-| “Aprovados”, após um pedido somente de cenários | Registrar a aprovação, sem iniciar automação. |
-| “Não automatize ainda”, após uma autorização anterior | Respeitar a restrição mais recente. |
+Regra na fonte única [escopo, autorização e prontidão](../shared/authorization-and-scope.md#autorização-e-escopo), inclusive os exemplos de aplicação. É a referência central para a transição de cenários para implementação, inclusive nos prompts de Playwright e k6.
 
 ---
 
 ## 6. Gerar implementação quando autorizada e pronta
 
-Além da autorização definida na etapa 5:
-
-- Criar ou receber cenários e analisar os inputs relevantes antes de convertê-los em código. Uma solicitação explícita de automação dispensa nova confirmação, mas não essa preparação.
-- Reutilizar análises, cenários e decisões já disponíveis; não repetir etapas concluídas sem necessidade.
-- Identificar lacunas que afetem comportamento esperado, destino ou critérios de validação. Esclarecer o que bloquear a implementação e avançar nas partes independentes, sem inventar requisitos.
-- Se houver revisão solicitada pelo usuário ainda pendente, aguardar sua conclusão antes de implementar.
+Além da autorização da etapa 5, aplicar a [prontidão para implementar](../shared/authorization-and-scope.md#prontidão-para-implementar).
 
 Encaminhar conforme o objetivo e a ferramenta escolhida:
 
@@ -160,9 +144,13 @@ Encaminhar conforme o objetivo e a ferramenta escolhida:
 - Desempenho em k6: [geração k6](../prompts/generate-k6-tests.md), preservando os requisitos quantitativos e as hipóteses do planejamento.
 - Desempenho com ferramenta ainda indefinida: esclarecer a escolha antes de implementar, aproveitando o planejamento já feito.
 
+### Comandos no terminal
+
+Regra na fonte única [comandos no terminal](../shared/terminal-commands.md), válida para qualquer agente.
+
 ### Execução de carga
 
-Gerar scripts e executar carga são ações distintas. Executar carga somente quando isso estiver solicitado ou autorizado, com alvo, perfil, limites e condições de parada definidos. Aproveitar autorizações já dadas dentro desse escopo. Verificações que enviem requisições, mesmo curtas, também devem respeitar esse alvo e escopo; verificações locais de configuração não comprovam desempenho. Registrar o que foi executado e não usar endpoints públicos de exemplo como destino automático.
+Regra na fonte única [execução de carga](../shared/load-execution.md): gerar scripts e executar carga são ações distintas.
 
 ---
 
@@ -176,7 +164,7 @@ Para Playwright, se o usuário não especificar arquitetura, aplicar Hybrid Arch
 
 Usar como referência:
 
-`architecture/architecture-guidelines.md`
+[Diretrizes de arquitetura](../architecture/architecture-guidelines.md)
 
 Para k6, seguir as responsabilidades e convenções do projeto de destino descritas no [prompt k6](../prompts/generate-k6-tests.md#projeto-e-arquitetura). Usar JavaScript por padrão no runtime k6; não impor Page Objects ou Node.js como runtime dos testes. O planejamento de desempenho permanece independente de linguagem e ferramenta.
 
@@ -184,13 +172,4 @@ Para k6, seguir as responsabilidades e convenções do projeto de destino descri
 
 ## 8. Entregar resultado de forma clara
 
-Ao finalizar, informar:
-
-- o que foi analisado;
-- principais gaps e riscos;
-- cenários ou arquivos gerados;
-- cobertura principal;
-- arquitetura usada, quando houver automação;
-- próximos passos recomendados.
-
-Em desempenho, informar também requisitos e perfis selecionados, pendências quantitativas e prontidão para implementação. Se houver execução ou análise de resultados, distinguir validade da execução, cumprimento das metas e limitações das evidências. Não declarar capacidade ou aprovação do produto com base apenas na geração dos scripts.
+Estrutura do resumo final, inclusive para desempenho: ver [entregar o resultado](../skills/qa-flow/SKILL.md#4-entregar-o-resultado).

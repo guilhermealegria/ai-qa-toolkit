@@ -12,8 +12,8 @@ Este prompt cobre desempenho, capacidade, estabilidade e recuperação sob carga
 - Os seis tipos descrevem objetivos e perfis de teste, não uma ferramenta específica. O planejamento deve poder orientar implementações em k6, JMeter ou outra ferramenta adequada.
 - Templates existentes são referências opcionais de implementação. Valores, endpoints e critérios de exemplo não são requisitos de um produto real.
 - Não faça auditoria de um template como parte do levantamento, salvo solicitação do usuário.
-- Siga as etapas de análise, gaps, cenários e revisão de `../workflows/qa-generation-flow.md`.
-- A arquitetura Playwright de `../architecture/architecture-guidelines.md` continua aplicável aos projetos Playwright. Não imponha essa arquitetura nem uma linguagem de programação ao planejamento de desempenho.
+- Siga as etapas de análise, gaps, cenários e revisão de [qa-generation-flow.md](../workflows/qa-generation-flow.md).
+- A arquitetura Playwright de [architecture-guidelines.md](../architecture/architecture-guidelines.md) continua aplicável aos projetos Playwright. Não imponha essa arquitetura nem uma linguagem de programação ao planejamento de desempenho.
 - A escolha da ferramenta não é pré-condição para levantar requisitos ou escrever cenários. Pergunte sobre ela quando for necessário preparar a implementação; respeite escolhas já informadas.
 - Para avançar à implementação, aplique as condições de escopo, autorização e prontidão das etapas 5 e 6 do [workflow](../workflows/qa-generation-flow.md). Não gere scripts em pedidos limitados a levantamento ou cenários; respeite revisão solicitada ainda pendente e não repita autorização já dada. Cenários aprovados, por si só, não autorizam implementação.
 - Preparar código não implica executar carga. Aplicar a regra de [execução de carga do workflow](../workflows/qa-generation-flow.md#execução-de-carga), respeitando o ambiente, o perfil e o escopo acordados.
@@ -22,7 +22,7 @@ Este prompt cobre desempenho, capacidade, estabilidade e recuperação sob carga
 
 Aceite histórias, contratos de API, documentação, métricas de produção, incidentes, diagramas, objetivos de negócio, respostas do time e cenários existentes.
 
-Prefira arquivos locais em `inputs/` para materiais extensos, leia os trechos relevantes e não versione seu conteúdo real por padrão. Use `analyze-input.md` como referência para análise e separação de fatos, gaps, riscos e premissas.
+Para materiais extensos, siga a [leitura seletiva do workflow](../workflows/qa-generation-flow.md#1-analisar-os-inputs-recebidos). Use a skill [qa-analysis](../skills/qa-analysis/SKILL.md) como referência para análise e separação de fatos, gaps, riscos e premissas.
 
 1. Identifique a etapa solicitada: levantamento, escrita, implementação ou análise de resultados.
 2. Extraia primeiro as respostas já presentes nos inputs. Não refaça perguntas respondidas.
@@ -241,7 +241,7 @@ Se o usuário pediu apenas perguntas, encerre com o levantamento e indique quais
 
 # Referências
 
-- [Análise de inputs](analyze-input.md)
+- [Análise de inputs](../skills/qa-analysis/SKILL.md)
 - [Workflow de geração de QA](../workflows/qa-generation-flow.md)
 - [Implementação especializada em k6](generate-k6-tests.md)
 

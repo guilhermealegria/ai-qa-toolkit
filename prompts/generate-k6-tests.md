@@ -11,7 +11,7 @@ Este prompt implementa os tipos **Smoke, Load, Stress, Soak, Spike e Breakpoint*
 - Se o pedido for apenas planejamento ou cenários, use o prompt de planejamento e não gere scripts automaticamente.
 - Para automatizar, aplique as condições de escopo, autorização e prontidão das etapas 5 e 6 do [workflow](../workflows/qa-generation-flow.md). Respeite revisão solicitada ainda pendente e não repita autorização já dada. Cenários aprovados, por si só, não autorizam implementação.
 - Se faltarem decisões que afetem carga, destino, duração ou aceite, identifique as lacunas e avance nas partes independentes. Não substitua requisitos ausentes pelos padrões de um template.
-- Prefira inputs extensos em `inputs/`, com leitura localizada, sem versionar seu conteúdo real por padrão.
+- Para inputs extensos, siga a [leitura seletiva do workflow](../workflows/qa-generation-flow.md#1-analisar-os-inputs-recebidos).
 
 # Projeto e arquitetura
 
@@ -86,7 +86,7 @@ No Breakpoint, diferencie patamares completos, parciais e não executados. Ident
 
 # Exemplo de uso
 
-> Use `prompts/generate-k6-tests.md` para implementar os cenários [caminho] no projeto [destino fora do toolkit], usando [template ou convenções existentes]. Os requisitos e critérios estão no planejamento. Gere os scripts e documente a execução; não execute carga nesta etapa.
+> Use o prompt de geração k6 do toolkit para implementar os cenários [caminho] no projeto [destino fora do toolkit], usando [template ou convenções existentes]. Os requisitos e critérios estão no planejamento. Gere os scripts e documente a execução; não execute carga nesta etapa.
 
 # Referências técnicas
 

@@ -100,7 +100,7 @@ Em step-by-step, usar uma linha por passo, com colunas `ID`, `Título`, `Origem`
 | Step-by-step | Tabela com as colunas da seção 1, apresentada na resposta. | Quando solicitado arquivo de planilha, gerar um `.xlsx` real com a mesma estrutura. Não aplicar o CSV Cucumber a cenários step-by-step. |
 
 - Não adicionar os artefatos de cenários ao projeto final de automação. A automação pode consumir esses cenários sem copiar os arquivos para o projeto.
-- Usar o destino de artefatos informado ou uma convenção já definida no workspace; se não houver destino inequívoco, esclarecê-lo antes de gravar os arquivos e avançar no conteúdo independente dessa decisão.
+- Seguir as regras de [destino e versionamento de artefatos do workflow](../workflows/qa-generation-flow.md#artefatos-privacidade-e-versionamento).
 - Informar o caminho ou link de cada arquivo efetivamente criado. Conteúdo na resposta deve ser identificado como conteúdo, não como arquivo gerado.
 - Uma tabela Markdown ou um CSV renomeado não constitui um arquivo `.xlsx`.
 - Se a criação de um arquivo solicitado estiver indisponível, informar a limitação e apresentar o conteúdo disponível, deixando explícito qual artefato permanece pendente.

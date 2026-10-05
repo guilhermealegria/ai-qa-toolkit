@@ -14,6 +14,7 @@ Este repositório é um toolkit de apoio para QA. Ele NÃO é o projeto final de
 - Usar este repositório como fonte de prompts, workflows, padrões arquiteturais e convenções.
 - Arquivos de entrada recebidos do usuário devem ser colocados preferencialmente em `inputs/` para reduzir uso de tokens, permitindo leitura localizada e busca por trechos relevantes.
 - O conteúdo real de `inputs/` não deve ser versionado por padrão, pois pode conter documentação interna, dados sensíveis ou massa de análise temporária.
+- Antes de executar qualquer comando no terminal, identificar o shell ativo e adaptar a sintaxe a ele; não assumir Bash, Linux ou WSL por padrão. Regra completa na seção "Comandos no terminal" de `workflows/qa-generation-flow.md`.
 
 ---
 
@@ -71,7 +72,7 @@ Seguir o workflow oficial:
 
 Resumo do fluxo:
 
-0. Se os inputs recebidos forem sem texto após "My request for Code:", sempre perguntar ao usuário quais das opções deseja executar antes de prosseguir.
+0. Verificar a intenção conforme a etapa 0 do workflow: aproveitar o objetivo já definido na conversa, inclusive quando "My request for Code:" estiver vazio. Perguntar qual tarefa executar somente quando não houver intenção identificável na mensagem nem no contexto.
 1. Identificar o objetivo solicitado e analisar os inputs usando o encaminhamento do workflow.
 2. Identificar gaps, riscos, edge cases e premissas.
 3. Definir o Test Repository do Xray quando houver geração de CSV; se o usuário não informar, gerar um nome automático coerente com o input.
@@ -79,30 +80,15 @@ Resumo do fluxo:
 5. Verificar o escopo e a autorização conforme a etapa 5 do workflow; respeitar revisões solicitadas e não repetir confirmações já dadas.
 6. Gerar automação somente no escopo solicitado ou autorizado, com cenários e prontidão conforme a etapa 6 do workflow. Cenários aprovados, por si só, não autorizam implementação.
 7. Aplicar as convenções da ferramenta escolhida; Hybrid Architecture é o padrão somente para Playwright.
-8. Aplicar as convenções do projeto.
+8. Entregar resumo claro do que foi gerado.
 
 ---
 
 # Inputs suportados
 
-O toolkit pode receber:
+Os tipos de input aceitos e a forma de lê-los estão na etapa 1 de `workflows/qa-generation-flow.md`; a técnica de leitura seletiva está em `skills/qa-analysis/SKILL.md`.
 
-- User Stories;
-- critérios de aceite;
-- OpenAPI;
-- Swagger;
-- Figma;
-- regras de negócio;
-- logs;
-- payloads;
-- documentação técnica;
-- métricas, incidentes, objetivos de desempenho e resultados de execuções anteriores.
-
-## Padrão para arquivos de input
-
-- Preferir arquivos locais em `inputs/` quando o input for médio ou grande.
-- Usar texto direto no prompt apenas para inputs pequenos ou instruções pontuais.
-- Ao receber arquivos em `inputs/`, ler somente os trechos necessários para a tarefa e cruzar fontes quando houver mais de um arquivo.
+- Preferir arquivos locais em `inputs/` quando o input for médio ou grande; usar texto direto no prompt apenas para inputs pequenos ou instruções pontuais.
 - Não criar automação diretamente a partir dos arquivos de input sem antes seguir o workflow oficial.
 
 ---
@@ -111,7 +97,7 @@ O toolkit pode receber:
 
 Consultar:
 
-- `prompts/analyze-input.md`
+- `skills/qa-analysis/SKILL.md` — análise de inputs
 - `prompts/generate-scenarios.md`
 - `prompts/generate-playwright-tests.md`
 - `prompts/plan-non-functional-tests.md` — planejamento de desempenho independente de ferramenta.
@@ -121,16 +107,4 @@ Consultar:
 
 # Estrutura padrão esperada para projetos gerados
 
-Esta estrutura deve ser usada apenas no projeto Playwright gerado, nunca diretamente dentro do `AI-QA-TOOLKIT`:
-
-Ela representa as camadas disponíveis. Criar somente as necessárias ao projeto, conforme `architecture/architecture-guidelines.md`; projetos apenas de API não precisam de `pages/`, e `actions/` também pode compor jornadas de API.
-
-```text
-tests/
-pages/
-actions/
-services/
-helpers/
-fixtures/
-data/
-```
+As camadas disponíveis (`tests/`, `pages/`, `actions/`, `services/`, `helpers/`, `fixtures/`, `data/`) e os critérios para criá-las estão em `architecture/architecture-guidelines.md`. Aplicam-se apenas ao projeto Playwright gerado, nunca diretamente dentro do `AI-QA-TOOLKIT`.

@@ -20,12 +20,8 @@ Ele NÃO é o projeto final de automação.
 
 # Execução de comandos
 
-- Antes de executar qualquer comando no terminal, identificar o shell ativo informado pelo ambiente, pela IDE ou pelo contexto da sessão.
-- Adaptar a sintaxe dos comandos ao shell ativo. Se o terminal for PowerShell, usar comandos e sintaxe de PowerShell.
-- Não assumir Bash, Linux ou WSL por padrão.
-- Evitar comandos com sintaxe exclusiva de Bash, como `&&`, `||`, `export`, `source`, `grep`, `sed`, `awk`, redirecionamentos ou expansões específicas, quando o shell ativo for PowerShell.
-- Quando houver dúvida sobre o shell ativo, verificar primeiro com um comando compatível ou perguntar ao usuário antes de executar comandos dependentes do shell.
-- Em ambiente Windows com PowerShell, preferir cmdlets como `Get-ChildItem`, `Get-Content`, `Select-String`, `Set-Location`, `$env:VAR = "valor"` e `Remove-Item` com cuidado explícito.
+- Antes de executar qualquer comando no terminal, identificar o shell ativo e adaptar a sintaxe a ele; não assumir Bash, Linux ou WSL por padrão.
+- Regra completa, incluindo PowerShell: seção "Comandos no terminal" de `workflows/qa-generation-flow.md`.
 
 ---
 
@@ -65,7 +61,7 @@ Seguir o fluxo central:
 
 Resumo:
 
-0. Se os inputs recebidos forem sem texto após "My request for Code:", sempre perguntar ao usuário quais das opções deseja executar antes de prosseguir.
+0. Verificar a intenção conforme a etapa 0 do workflow: aproveitar o objetivo já definido na conversa, inclusive quando "My request for Code:" estiver vazio. Perguntar qual tarefa executar somente quando não houver intenção identificável na mensagem nem no contexto.
 1. Identificar o objetivo solicitado e analisar os inputs usando o encaminhamento do workflow.
 2. Identificar gaps, riscos, edge cases e premissas.
 3. Definir o Test Repository do Xray quando houver geração de CSV; se o usuário não informar, gerar um nome automático coerente com o input.
@@ -81,7 +77,7 @@ Resumo:
 
 Usar os prompts abaixo como fonte principal:
 
-- `prompts/analyze-input.md`
+- `skills/qa-analysis/SKILL.md` — análise de inputs
 - `prompts/generate-scenarios.md`
 - `prompts/generate-playwright-tests.md`
 - `prompts/plan-non-functional-tests.md` — planejamento de desempenho independente de ferramenta.
@@ -91,17 +87,9 @@ Usar os prompts abaixo como fonte principal:
 
 # Inputs
 
-Quando o usuário fornecer documentação, contratos, payloads, logs, regras de negócio ou outros materiais suportados, usar preferencialmente:
+Os tipos de input aceitos e a forma de lê-los estão na etapa 1 de `workflows/qa-generation-flow.md`; a técnica de leitura seletiva está em `skills/qa-analysis/SKILL.md`.
 
-```text
-inputs/
-```
-
-Orientações:
-
-- Ler arquivos locais em `inputs/` somente conforme a necessidade da tarefa.
-- Evitar carregar arquivos inteiros no contexto quando for possível localizar trechos relevantes.
-- Usar texto colado no prompt apenas para inputs pequenos ou instruções complementares.
+- Preferir arquivos locais em `inputs/` quando o conteúdo for médio ou grande; usar texto colado no prompt apenas para inputs pequenos ou instruções complementares.
 
 ---
 
