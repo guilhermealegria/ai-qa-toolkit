@@ -22,7 +22,7 @@ Este prompt implementa os tipos **Smoke, Load, Stress, Soak, Spike e Breakpoint*
 - Não pressuponha um caminho local para o template. Se o destino de escrita não estiver definido, esclareça-o antes de criar arquivos.
 - Preserve alterações do usuário e convenções do projeto. Separe comunicação, jornadas, perfis e entrypoints sem impor Page Objects de Playwright.
 - Configuração de destino e credenciais deve seguir o projeto; não versione segredos nem assuma carregamento automático de `.env`.
-- Preparar scripts não implica executar carga. Respeite alvo, perfil e escopo acordados; não use APIs públicas de exemplo como destino automático de carga.
+- Preparar scripts não implica executar carga. Aplicar a regra de [execução de carga do workflow](../workflows/qa-generation-flow.md#execução-de-carga), respeitando alvo, perfil e escopo acordados; não usar APIs públicas de exemplo como destino automático de carga.
 
 # Mapeamento dos cenários para k6
 
@@ -78,7 +78,7 @@ No Breakpoint, diferencie patamares completos, parciais e não executados. Ident
 # Validação e entrega
 
 1. Verifique sintaxe, imports, opções, configuração obrigatória e comandos, usando `k6 inspect` ou verificações adequadas quando disponíveis.
-2. Faça verificações curtas em alvo local ou no ambiente e escopo acordados antes de executar perfis completos. Registre indisponibilidade de k6, ambiente ou dados.
+2. Quando a execução estiver no escopo solicitado ou autorizado, faça verificações curtas no alvo e limites acordados antes de executar perfis completos. Em pedidos de somente geração, limite-se às verificações locais que não enviem carga. Registre indisponibilidade de k6, ambiente ou dados.
 3. Confira se a carga planejada foi entregue e se as fases tiveram amostras adequadas. Falta de dados não deve ser interpretada como aprovação.
 4. Documente comandos, variáveis, requisitos relacionados, significado dos thresholds, coleta de evidências e limitações.
 5. Preserve o código de saída do k6; não o mascare para converter reprovação em sucesso de pipeline.

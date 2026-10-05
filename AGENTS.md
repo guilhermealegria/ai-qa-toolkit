@@ -1,6 +1,6 @@
 # Projeto
 
-AI QA Toolkit para geração de análise de requisitos, cenários de teste e automação Playwright com apoio de IA.
+AI QA Toolkit para análise de requisitos, cenários funcionais, automação Playwright, planejamento de desempenho e geração de scripts k6 com apoio de IA.
 
 Este repositório é um toolkit de apoio para QA. Ele NÃO é o projeto final de automação.
 
@@ -8,7 +8,7 @@ Este repositório é um toolkit de apoio para QA. Ele NÃO é o projeto final de
 
 # Regras obrigatórias do repositório
 
-- Não criar projetos Playwright diretamente dentro deste repositório.
+- Não criar projetos executáveis Playwright ou k6 diretamente dentro deste repositório.
 - Não criar as pastas `tests/`, `pages/`, `actions/`, `services/`, `fixtures/`, `helpers/` ou `data/` dentro deste repositório, exceto quando a tarefa for alterar exemplos, documentação ou templates do próprio toolkit.
 - Projetos de automação gerados devem ser criados fora da pasta `AI-QA-TOOLKIT`.
 - Usar este repositório como fonte de prompts, workflows, padrões arquiteturais e convenções.
@@ -25,6 +25,7 @@ Gerar artefatos de QA com clareza, rastreabilidade e foco em engenharia de teste
 - identificação de gaps, riscos, edge cases e premissas;
 - cenários de teste;
 - automação Playwright;
+- planejamento de desempenho e implementação em k6;
 - estruturas arquiteturais sustentáveis.
 
 ---
@@ -34,6 +35,8 @@ Gerar artefatos de QA com clareza, rastreabilidade e foco em engenharia de teste
 - Playwright
 - JavaScript
 - Node.js
+
+Essa stack se aplica à automação Playwright. Para desempenho, o planejamento é independente de ferramenta; a implementação especializada em k6 usa JavaScript e o runtime k6. Gerar scripts não implica executar carga; seguir o escopo de execução definido no workflow.
 
 ---
 
@@ -46,7 +49,7 @@ Gerar artefatos de QA com clareza, rastreabilidade e foco em engenharia de teste
 
 # Arquitetura padrão
 
-Se nenhuma arquitetura for especificada, utilizar Hybrid Architecture combinando:
+Para Playwright, se nenhuma arquitetura for especificada, utilizar Hybrid Architecture combinando:
 
 - Page Object Model;
 - Application Actions;
@@ -55,6 +58,8 @@ Se nenhuma arquitetura for especificada, utilizar Hybrid Architecture combinando
 Referência obrigatória:
 
 `architecture/architecture-guidelines.md`
+
+Para k6, seguir `prompts/generate-k6-tests.md` e as convenções do projeto de destino, sem impor a arquitetura Playwright.
 
 ---
 
@@ -67,13 +72,13 @@ Seguir o workflow oficial:
 Resumo do fluxo:
 
 0. Se os inputs recebidos forem sem texto após "My request for Code:", sempre perguntar ao usuário quais das opções deseja executar antes de prosseguir.
-1. Analisar os inputs recebidos.
+1. Identificar o objetivo solicitado e analisar os inputs usando o encaminhamento do workflow.
 2. Identificar gaps, riscos, edge cases e premissas.
 3. Definir o Test Repository do Xray quando houver geração de CSV; se o usuário não informar, gerar um nome automático coerente com o input.
-4. Gerar cenários de teste rastreáveis.
+4. Gerar cenários rastreáveis no formato funcional ou na ficha quantitativa de desempenho, conforme o pedido.
 5. Verificar o escopo e a autorização conforme a etapa 5 do workflow; respeitar revisões solicitadas e não repetir confirmações já dadas.
 6. Gerar automação somente no escopo solicitado ou autorizado, com cenários e prontidão conforme a etapa 6 do workflow. Cenários aprovados, por si só, não autorizam implementação.
-7. Respeitar a arquitetura definida ou a Hybrid Architecture por padrão.
+7. Aplicar as convenções da ferramenta escolhida; Hybrid Architecture é o padrão somente para Playwright.
 8. Aplicar as convenções do projeto.
 
 ---
@@ -90,7 +95,8 @@ O toolkit pode receber:
 - regras de negócio;
 - logs;
 - payloads;
-- documentação técnica.
+- documentação técnica;
+- métricas, incidentes, objetivos de desempenho e resultados de execuções anteriores.
 
 ## Padrão para arquivos de input
 
@@ -108,6 +114,8 @@ Consultar:
 - `prompts/analyze-input.md`
 - `prompts/generate-scenarios.md`
 - `prompts/generate-playwright-tests.md`
+- `prompts/plan-non-functional-tests.md` — planejamento de desempenho independente de ferramenta.
+- `prompts/generate-k6-tests.md` — implementação dos cenários de desempenho em k6.
 
 ---
 

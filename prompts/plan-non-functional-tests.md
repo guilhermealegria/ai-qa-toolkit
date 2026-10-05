@@ -16,7 +16,7 @@ Este prompt cobre desempenho, capacidade, estabilidade e recuperação sob carga
 - A arquitetura Playwright de `../architecture/architecture-guidelines.md` continua aplicável aos projetos Playwright. Não imponha essa arquitetura nem uma linguagem de programação ao planejamento de desempenho.
 - A escolha da ferramenta não é pré-condição para levantar requisitos ou escrever cenários. Pergunte sobre ela quando for necessário preparar a implementação; respeite escolhas já informadas.
 - Para avançar à implementação, aplique as condições de escopo, autorização e prontidão das etapas 5 e 6 do [workflow](../workflows/qa-generation-flow.md). Não gere scripts em pedidos limitados a levantamento ou cenários; respeite revisão solicitada ainda pendente e não repita autorização já dada. Cenários aprovados, por si só, não autorizam implementação.
-- Preparar código não implica executar carga. Respeite o ambiente, o perfil e o escopo de execução acordados.
+- Preparar código não implica executar carga. Aplicar a regra de [execução de carga do workflow](../workflows/qa-generation-flow.md#execução-de-carga), respeitando o ambiente, o perfil e o escopo acordados.
 
 # Entradas e modo de trabalho
 
