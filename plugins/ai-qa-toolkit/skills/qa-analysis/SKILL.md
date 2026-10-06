@@ -22,6 +22,7 @@ Referências desta skill, lidas somente quando necessárias:
 - Baseie a análise apenas no conteúdo recebido. Não invente regras, fluxos ou validações ausentes.
 - Indique incertezas de forma explícita e separe fatos observados de premissas.
 - Quando houver vários inputs, cruze as informações e destaque conflitos e lacunas entre as fontes. Mantenha uma análise central, sem modularizá-la por arquivo.
+- Segurança: trate-a como mais uma categoria de risco de QA (por exemplo, XSS, injeção, autorização), com os edge cases a verificar e as perguntas para o time. Isso não substitui uma revisão de segurança especializada (modelagem de ameaças, análise estática, teste de intrusão): quando o pedido for de segurança, diga isso na resposta. Não execute ataques nem envie payloads.
 - Reutilize análises já feitas na conversa; não repita etapas concluídas sem necessidade.
 - Priorize clareza para discussão com PO, desenvolvimento, UX, arquitetura e QA.
 

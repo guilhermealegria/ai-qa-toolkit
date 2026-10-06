@@ -31,7 +31,7 @@ Referências desta skill, lidas somente quando necessárias:
 - Use JavaScript por padrão e o runtime k6; npm pode padronizar comandos, sem tornar Node.js o runtime dos testes.
 - O `template-k6` é uma possível base para fork ou clone, não um requisito para usar esta skill. Consulte o projeto indicado e suas instruções locais antes de editar.
 - Seus valores, endpoints e thresholds são exemplos didáticos. Preserve requisitos reais e não faça uma auditoria dos exemplos salvo solicitação.
-- Não pressuponha um caminho local para o template. Se o destino de escrita não estiver definido, esclareça-o antes de criar arquivos.
+- Não pressuponha um caminho local para o template. Se não houver destino de escrita inequívoco informado pelo usuário ou já definido na conversa, não use o diretório de trabalho atual: pergunte onde criar o projeto, continue a preparação do conteúdo que não dependa dessa resposta e não crie arquivos antes dela.
 - Preserve alterações do usuário e convenções do projeto. Separe comunicação, jornadas, perfis e entrypoints sem impor Page Objects de Playwright.
 - Configuração de destino e credenciais deve seguir o projeto; não versione segredos nem assuma carregamento automático de `.env`.
 - Preparar scripts não implica executar carga. Aplique [execução de carga](../../shared/load-execution.md), respeitando alvo, perfil e escopo acordados; não use APIs públicas de exemplo como destino automático de carga.
