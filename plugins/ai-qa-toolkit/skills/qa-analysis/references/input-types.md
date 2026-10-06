@@ -39,4 +39,4 @@ Use apenas a seção do tipo recebido. Em combinações, aplique todas as pertin
 
 - Registrar valores, unidades, janelas de avaliação e ambiente como fatos, sem converter hipóteses em requisitos.
 - Registrar ausências como pendências, sem usar valores de exemplo como metas reais.
-- Para levantar requisitos e escrever cenários de desempenho, encaminhar à skill `qa-perf-plan`.
+- Para levantar requisitos e escrever cenários de desempenho, encaminhar à skill `qa-nft-plan`.

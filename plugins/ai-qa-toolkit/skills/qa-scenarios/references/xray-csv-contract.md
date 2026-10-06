@@ -25,7 +25,7 @@ TestID;Test type;Summary;Description;Priority;Action;Data;Expected Result;Gherki
 | Data | Vazio neste perfil Cucumber; deixar sem mapeamento. Dados do cenário ficam no Gherkin. |
 | Expected Result | Vazio neste perfil Cucumber; deixar sem mapeamento. As expectativas ficam no Gherkin. |
 | Gherkin definition | Passos do cenário com quebras reais de linha; mapear para a definição Gherkin do teste. |
-| Test Repository | Destino informado ou gerado conforme o prompt de cenários; mapear para o campo de pasta do Test Repository disponível no importador. Não é a chave do projeto Jira. |
+| Test Repository | Destino informado ou gerado conforme a skill de cenários; mapear para o campo de pasta do Test Repository disponível no importador. Não é a chave do projeto Jira. |
 
 O cabeçalho é uma convenção do toolkit, não um esquema universal de toda instalação Xray. Não incluir colunas extras silenciosamente. Se o projeto exigir campos adicionais, documentar a extensão e o mapeamento específico.
 
@@ -62,4 +62,4 @@ O importador documenta seleção de encoding/delimitador, campos entre aspas par
 5. Informar que a importação requer seleção de projeto, mapeamento de campos, prioridades e configuração de pastas apropriados. Se edição ou campos obrigatórios forem desconhecidos, registrar essa pendência sem impedir a preparação do conteúdo.
 6. Relatar separadamente: CSV gerado, verificações locais realizadas e importação real realizada ou não. Não alegar importação bem-sucedida apenas porque o parser leu o arquivo.
 
-Exemplo: [xray-cucumber.csv](../examples/xray-cucumber.csv). Contém dois cenários fictícios de catálogo, com acentos, aspas, ponto e vírgula e Gherkin multilinha. Não inclui credenciais, chaves Jira ou destinos reais.
+Exemplo: [xray-cucumber.csv](../assets/xray-cucumber.csv). Contém dois cenários fictícios de catálogo, com acentos, aspas, ponto e vírgula e Gherkin multilinha. Não inclui credenciais, chaves Jira ou destinos reais.

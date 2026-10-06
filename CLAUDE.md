@@ -47,9 +47,9 @@ Para Playwright, quando o usuário não especificar arquitetura, usar Hybrid Arc
 
 Referência:
 
-`architecture/architecture-guidelines.md`
+`plugins/ai-qa-toolkit/skills/qa-playwright/references/architecture-guidelines.md`
 
-Para k6, seguir `prompts/generate-k6-tests.md` e as convenções do projeto de destino, sem impor a arquitetura Playwright.
+Para k6, seguir `plugins/ai-qa-toolkit/skills/qa-k6/SKILL.md` e as convenções do projeto de destino, sem impor a arquitetura Playwright.
 
 ---
 
@@ -77,17 +77,17 @@ Resumo:
 
 Usar os prompts abaixo como fonte principal:
 
-- `skills/qa-analysis/SKILL.md` — análise de inputs
-- `prompts/generate-scenarios.md`
-- `prompts/generate-playwright-tests.md`
-- `prompts/plan-non-functional-tests.md` — planejamento de desempenho independente de ferramenta.
-- `prompts/generate-k6-tests.md` — implementação dos cenários de desempenho em k6.
+- `plugins/ai-qa-toolkit/skills/qa-analysis/SKILL.md` — análise de inputs
+- `plugins/ai-qa-toolkit/skills/qa-scenarios/SKILL.md` — cenários funcionais e exportação Xray
+- `plugins/ai-qa-toolkit/skills/qa-playwright/SKILL.md` — automação Playwright
+- `plugins/ai-qa-toolkit/skills/qa-nft-plan/SKILL.md` — planejamento de desempenho independente de ferramenta.
+- `plugins/ai-qa-toolkit/skills/qa-k6/SKILL.md` — implementação dos cenários de desempenho em k6.
 
 ---
 
 # Inputs
 
-Os tipos de input aceitos e a forma de lê-los estão na etapa 1 de `workflows/qa-generation-flow.md`; a técnica de leitura seletiva está em `skills/qa-analysis/SKILL.md`.
+Os tipos de input aceitos e a forma de lê-los estão na etapa 1 de `workflows/qa-generation-flow.md`; a técnica de leitura seletiva está em `plugins/ai-qa-toolkit/skills/qa-analysis/SKILL.md`.
 
 - Preferir arquivos locais em `inputs/` quando o conteúdo for médio ou grande; usar texto colado no prompt apenas para inputs pequenos ou instruções complementares.
 

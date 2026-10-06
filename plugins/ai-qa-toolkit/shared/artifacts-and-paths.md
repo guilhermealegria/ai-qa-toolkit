@@ -17,7 +17,7 @@ Procurar recursos do toolkit apenas nos próprios recursos, nunca no projeto de 
 ## Artefatos, privacidade e versionamento
 
 - **Destino dos artefatos de QA** (cenários, fichas de desempenho, exportações): usar o destino informado pelo usuário ou uma convenção já definida no workspace. Quando o workspace for o checkout do toolkit, a convenção é `generated-scenarios/`, já excluída do Git. Sem destino inequívoco, esclarecê-lo antes de gravar e avançar no conteúdo independente dessa decisão.
-- **Não versionar por padrão:** o conteúdo real de `inputs/`, os artefatos gerados e as saídas de execução, pois podem conter documentação interna, dados sensíveis ou massa temporária. As exceções são os arquivos explicitamente liberados, como o exemplo fictício `examples/xray-cucumber.csv`, o `inputs/README.md` e os `.gitkeep`.
+- **Não versionar por padrão:** o conteúdo real de `inputs/`, os artefatos gerados e as saídas de execução, pois podem conter documentação interna, dados sensíveis ou massa temporária. As exceções são os arquivos explicitamente liberados, como o exemplo fictício distribuído com a skill `qa-scenarios` (`assets/xray-cucumber.csv`), o `inputs/README.md` e os `.gitkeep`.
 - **Exemplos e referências distribuídos** devem ser fictícios, sem credenciais, chaves, destinos reais ou dados de clientes.
 - **Projeto consumidor:** não alterar automaticamente o versionamento nem os arquivos de exclusão de um projeto de automação existente; sugerir a alteração quando for relevante.
 - **Distribuição:** o conteúdo de um pacote deve ser definido por lista explícita de arquivos, sem depender apenas das exclusões do Git. Essa definição pertence à etapa de empacotamento.

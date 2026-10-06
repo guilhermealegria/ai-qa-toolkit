@@ -9,12 +9,12 @@ Analise inputs de documentação de forma centralizada, objetiva e útil para QA
 
 Esta skill entrega um diagnóstico. Não gera cenários, exportações nem automação por consequência: se o usuário quiser seguir, use a skill da etapa seguinte, respeitando escopo e autorização.
 
-Se o foco for requisitos e cenários de desempenho (carga, duração, métricas, resultados de execuções anteriores), use `qa-perf-plan`.
+Se o foco for requisitos e cenários de desempenho (carga, duração, métricas, resultados de execuções anteriores), use `qa-nft-plan`.
 
 Referências desta skill, lidas somente quando necessárias:
 
 - [Instruções por tipo de input](references/input-types.md)
-- [Locais, artefatos, privacidade e versionamento](references/shared/artifacts-and-paths.md)
+- [Locais, artefatos, privacidade e versionamento](../../shared/artifacts-and-paths.md)
 
 ## Regras
 
@@ -32,7 +32,7 @@ Os inputs podem chegar como texto, arquivo anexado ou arquivo local. Para arquiv
 - Para arquivos médios ou grandes, leia apenas os trechos necessários.
 - Busque por termos, endpoints, critérios, campos, status codes ou mensagens antes de carregar conteúdo extenso.
 - Não trate a pasta `inputs/` como projeto final de automação.
-- O conteúdo real de inputs não é versionado por padrão; veja [locais e versionamento](references/shared/artifacts-and-paths.md).
+- O conteúdo real de inputs não é versionado por padrão; veja [locais e versionamento](../../shared/artifacts-and-paths.md).
 
 Tipos de input aceitos: user stories, critérios de aceite, OpenAPI ou Swagger, Figma ou descrição de UI, regras de negócio, logs, payloads, documentação técnica, mensagens de erro, exemplos de request e response, métricas, incidentes e objetivos de desempenho, e combinações dessas fontes.
 
@@ -64,7 +64,7 @@ Apresente a análise nesta ordem, com estes títulos:
 8. Perguntas para o time
 9. Sugestões
 
-Se o usuário pedir que a análise seja gravada em arquivo, siga o destino e o versionamento de [locais e artefatos](references/shared/artifacts-and-paths.md). Conteúdo apresentado na resposta não é arquivo gerado.
+Se o usuário pedir que a análise seja gravada em arquivo, siga o destino e o versionamento de [locais e artefatos](../../shared/artifacts-and-paths.md). Conteúdo apresentado na resposta não é arquivo gerado.
 
 ## Critérios de qualidade
 

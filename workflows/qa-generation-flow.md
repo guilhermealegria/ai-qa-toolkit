@@ -19,11 +19,11 @@ Ele deve ser usado por qualquer agente ou ferramenta que trabalhe neste reposit�
 
 # Locais e resolução de caminhos
 
-Regras na fonte única [locais, artefatos, privacidade e versionamento](../shared/artifacts-and-paths.md): três locais (recursos do toolkit, workspace de inputs e artefatos, projeto de automação). Nos arquivos de entrada na raiz (`AGENTS.md`, `CLAUDE.md`), os caminhos são relativos à raiz do toolkit.
+Regras na fonte única [locais, artefatos, privacidade e versionamento](../plugins/ai-qa-toolkit/shared/artifacts-and-paths.md): três locais (recursos do toolkit, workspace de inputs e artefatos, projeto de automação). Nos arquivos de entrada na raiz (`AGENTS.md`, `CLAUDE.md`), os caminhos são relativos à raiz do toolkit.
 
 ## Artefatos, privacidade e versionamento
 
-Destino dos artefatos, itens não versionados por padrão, exemplos fictícios, projeto consumidor e distribuição: ver [fonte única](../shared/artifacts-and-paths.md#artefatos-privacidade-e-versionamento).
+Destino dos artefatos, itens não versionados por padrão, exemplos fictícios, projeto consumidor e distribuição: ver [fonte única](../plugins/ai-qa-toolkit/shared/artifacts-and-paths.md#artefatos-privacidade-e-versionamento).
 
 ---
 
@@ -33,18 +33,18 @@ Aplicar somente as etapas pertinentes ao pedido, reutilizando análises, cenári
 
 | Objetivo solicitado | Referência principal | Entrega e limite |
 | --- | --- | --- |
-| Analisar documentação e testabilidade | [Análise de inputs](../skills/qa-analysis/SKILL.md) | Diagnóstico; não iniciar implementação automaticamente. |
-| Escrever ou revisar cenários funcionais | [Cenários funcionais](../prompts/generate-scenarios.md) | Cenários e exportações pertinentes ao pedido. |
-| Automatizar testes funcionais de API/UI | [Playwright](../prompts/generate-playwright-tests.md) | Implementação a partir de cenários, conforme etapas 5 e 6. |
-| Levantar requisitos ou escrever cenários de desempenho | [Planejamento de desempenho](../prompts/plan-non-functional-tests.md) | Requisitos mensuráveis e cenários independentes de ferramenta; sem scripts por padrão. |
-| Implementar cenários de desempenho em k6 | [Geração k6](../prompts/generate-k6-tests.md) | Scripts e verificações pertinentes; geração não implica executar carga. |
-| Analisar resultados de desempenho existentes | [Validação e interpretação](../prompts/plan-non-functional-tests.md#6-validação-e-interpretação) | Conclusões sustentadas pelas evidências; não iniciar nova execução automaticamente. |
+| Analisar documentação e testabilidade | [Análise de inputs](../plugins/ai-qa-toolkit/skills/qa-analysis/SKILL.md) | Diagnóstico; não iniciar implementação automaticamente. |
+| Escrever ou revisar cenários funcionais | [Cenários funcionais](../plugins/ai-qa-toolkit/skills/qa-scenarios/SKILL.md) | Cenários e exportações pertinentes ao pedido. |
+| Automatizar testes funcionais de API/UI | [Playwright](../plugins/ai-qa-toolkit/skills/qa-playwright/SKILL.md) | Implementação a partir de cenários, conforme etapas 5 e 6. |
+| Levantar requisitos ou escrever cenários de desempenho | [Planejamento de desempenho](../plugins/ai-qa-toolkit/skills/qa-nft-plan/SKILL.md) | Requisitos mensuráveis e cenários independentes de ferramenta; sem scripts por padrão. |
+| Implementar cenários de desempenho em k6 | [Geração k6](../plugins/ai-qa-toolkit/skills/qa-k6/SKILL.md) | Scripts e verificações pertinentes; geração não implica executar carga. |
+| Analisar resultados de desempenho existentes | [Validação e interpretação](../plugins/ai-qa-toolkit/skills/qa-nft-plan/SKILL.md#6-validação-e-interpretação) | Conclusões sustentadas pelas evidências; não iniciar nova execução automaticamente. |
 
 Para pedidos mistos, manter rastreabilidade comum, mas usar os critérios e formatos próprios de cada objetivo. Um contrato de API pode alimentar ambos os planejamentos; sua presença não determina a ferramenta. Para outra ferramenta explicitamente escolhida, preservar a especificação de desempenho e consultar sua documentação na implementação, sem substituir a escolha por k6. Planejamento de desempenho não representa cobertura completa de segurança, acessibilidade ou outros atributos não funcionais.
 
 ## 0. Tratar pedido sem intenção definida
 
-Regra na skill de coordenação: [identificar a intenção](../skills/qa-flow/SKILL.md#1-identificar-a-intenção). Preserva o caso de inputs sem texto após "My request for Code:", prevalece o objetivo já definido na conversa e, sem intenção identificável, pergunta qual tarefa executar.
+Regra na skill de coordenação: [identificar a intenção](../plugins/ai-qa-toolkit/skills/qa-flow/SKILL.md#1-identificar-a-intenção). Preserva o caso de inputs sem texto após "My request for Code:", prevalece o objetivo já definido na conversa e, sem intenção identificável, pergunta qual tarefa executar.
 
 ---
 
@@ -77,7 +77,7 @@ Identificar o tipo de input recebido:
 
 Usar como referência:
 
-[Análise de inputs](../skills/qa-analysis/SKILL.md)
+[Análise de inputs](../plugins/ai-qa-toolkit/skills/qa-analysis/SKILL.md)
 
 ---
 
@@ -94,7 +94,7 @@ Separar claramente:
 
 Não inventar comportamento ausente no input.
 
-Para desempenho, usar o roteiro de [planejamento](../prompts/plan-non-functional-tests.md) para identificar jornada, carga, duração, métricas, unidades, janelas de avaliação, ambiente e evidências. Registrar valores ausentes como pendências; não usar valores de templates como requisitos reais nem exigir escolha de ferramenta para começar o levantamento.
+Para desempenho, usar o roteiro de [planejamento](../plugins/ai-qa-toolkit/skills/qa-nft-plan/SKILL.md) para identificar jornada, carga, duração, métricas, unidades, janelas de avaliação, ambiente e evidências. Registrar valores ausentes como pendências; não usar valores de templates como requisitos reais nem exigir escolha de ferramenta para começar o levantamento.
 
 ---
 
@@ -106,7 +106,7 @@ Esta etapa se aplica somente quando a exportação estiver no escopo. Não exigi
 
 Seguir a regra detalhada definida em:
 
-[Geração de cenários](../prompts/generate-scenarios.md)
+[Skill de cenários](../plugins/ai-qa-toolkit/skills/qa-scenarios/SKILL.md#definição-do-test-repository-para-xray)
 
 ---
 
@@ -122,35 +122,35 @@ Para cenários funcionais, cobrir conforme aplicável:
 - falhas externas, indisponibilidade, timeouts e conflitos;
 - edge cases relevantes.
 
-Usar a referência de [cenários funcionais](../prompts/generate-scenarios.md).
+Usar a referência de [cenários funcionais](../plugins/ai-qa-toolkit/skills/qa-scenarios/SKILL.md).
 
-Para desempenho, usar a matriz de requisitos e a ficha de cenário de [planejamento de desempenho](../prompts/plan-non-functional-tests.md). Selecionar Smoke, Load, Stress, Soak, Spike e Breakpoint conforme objetivo e risco, sem tornar os seis obrigatórios. Preservar modelo de carga, unidade de trabalho, perfil temporal, critérios de aceite, condições de parada e evidências necessárias. BDD pode complementar a ficha quando solicitado, sem substituir sua especificação quantitativa.
+Para desempenho, usar a matriz de requisitos e a ficha de cenário de [planejamento de desempenho](../plugins/ai-qa-toolkit/skills/qa-nft-plan/SKILL.md). Selecionar Smoke, Load, Stress, Soak, Spike e Breakpoint conforme objetivo e risco, sem tornar os seis obrigatórios. Preservar modelo de carga, unidade de trabalho, perfil temporal, critérios de aceite, condições de parada e evidências necessárias. BDD pode complementar a ficha quando solicitado, sem substituir sua especificação quantitativa.
 
 ---
 
 ## 5. Verificar o escopo e a autorização para automação
 
-Regra na fonte única [escopo, autorização e prontidão](../shared/authorization-and-scope.md#autorização-e-escopo), inclusive os exemplos de aplicação. É a referência central para a transição de cenários para implementação, inclusive nos prompts de Playwright e k6.
+Regra na fonte única [escopo, autorização e prontidão](../plugins/ai-qa-toolkit/shared/authorization-and-scope.md#autorização-e-escopo), inclusive os exemplos de aplicação. É a referência central para a transição de cenários para implementação, inclusive nos prompts de Playwright e k6.
 
 ---
 
 ## 6. Gerar implementação quando autorizada e pronta
 
-Além da autorização da etapa 5, aplicar a [prontidão para implementar](../shared/authorization-and-scope.md#prontidão-para-implementar).
+Além da autorização da etapa 5, aplicar a [prontidão para implementar](../plugins/ai-qa-toolkit/shared/authorization-and-scope.md#prontidão-para-implementar).
 
 Encaminhar conforme o objetivo e a ferramenta escolhida:
 
-- Testes funcionais Playwright: [geração Playwright](../prompts/generate-playwright-tests.md).
-- Desempenho em k6: [geração k6](../prompts/generate-k6-tests.md), preservando os requisitos quantitativos e as hipóteses do planejamento.
+- Testes funcionais Playwright: [geração Playwright](../plugins/ai-qa-toolkit/skills/qa-playwright/SKILL.md).
+- Desempenho em k6: [geração k6](../plugins/ai-qa-toolkit/skills/qa-k6/SKILL.md), preservando os requisitos quantitativos e as hipóteses do planejamento.
 - Desempenho com ferramenta ainda indefinida: esclarecer a escolha antes de implementar, aproveitando o planejamento já feito.
 
 ### Comandos no terminal
 
-Regra na fonte única [comandos no terminal](../shared/terminal-commands.md), válida para qualquer agente.
+Regra na fonte única [comandos no terminal](../plugins/ai-qa-toolkit/shared/terminal-commands.md), válida para qualquer agente.
 
 ### Execução de carga
 
-Regra na fonte única [execução de carga](../shared/load-execution.md): gerar scripts e executar carga são ações distintas.
+Regra na fonte única [execução de carga](../plugins/ai-qa-toolkit/shared/load-execution.md): gerar scripts e executar carga são ações distintas.
 
 ---
 
@@ -164,12 +164,12 @@ Para Playwright, se o usuário não especificar arquitetura, aplicar Hybrid Arch
 
 Usar como referência:
 
-[Diretrizes de arquitetura](../architecture/architecture-guidelines.md)
+[Diretrizes de arquitetura](../plugins/ai-qa-toolkit/skills/qa-playwright/references/architecture-guidelines.md)
 
-Para k6, seguir as responsabilidades e convenções do projeto de destino descritas no [prompt k6](../prompts/generate-k6-tests.md#projeto-e-arquitetura). Usar JavaScript por padrão no runtime k6; não impor Page Objects ou Node.js como runtime dos testes. O planejamento de desempenho permanece independente de linguagem e ferramenta.
+Para k6, seguir as responsabilidades e convenções do projeto de destino descritas no [skill k6](../plugins/ai-qa-toolkit/skills/qa-k6/SKILL.md#projeto-e-arquitetura). Usar JavaScript por padrão no runtime k6; não impor Page Objects ou Node.js como runtime dos testes. O planejamento de desempenho permanece independente de linguagem e ferramenta.
 
 ---
 
 ## 8. Entregar resultado de forma clara
 
-Estrutura do resumo final, inclusive para desempenho: ver [entregar o resultado](../skills/qa-flow/SKILL.md#4-entregar-o-resultado).
+Estrutura do resumo final, inclusive para desempenho: ver [entregar o resultado](../plugins/ai-qa-toolkit/skills/qa-flow/SKILL.md#4-entregar-o-resultado).

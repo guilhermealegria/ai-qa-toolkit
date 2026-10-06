@@ -1,0 +1,12 @@
+{
+  "name": "ai-qa-toolkit-marketplace",
+  "interface": { "displayName": "AI QA Toolkit" },
+  "plugins": [
+    {
+      "name": "ai-qa-toolkit",
+      "source": { "source": "local", "path": "./plugins/ai-qa-toolkit" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
+    }
+  ]
+}
