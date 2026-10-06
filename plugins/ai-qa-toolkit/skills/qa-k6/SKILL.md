@@ -74,7 +74,7 @@ No Breakpoint, diferencie patamares completos, parciais e não executados. Ident
 ## Validação e entrega
 
 1. Verifique sintaxe, imports, opções, configuração obrigatória e comandos, usando `k6 inspect` ou verificações adequadas quando disponíveis.
-2. Quando a execução estiver no escopo solicitado ou autorizado, faça verificações curtas no alvo e limites acordados antes de executar perfis completos. Em pedidos de somente geração, limite-se às verificações locais que não enviem carga. Registre indisponibilidade de k6, ambiente ou dados.
+2. Quando a execução estiver no escopo solicitado ou autorizado, e o usuário tiver informado ou confirmado alvo, perfil, limites e condições de parada, faça verificações curtas nesse alvo e limites antes de executar perfis completos. Se algum desses itens faltar, ou se o alvo não for comprovadamente do usuário, não execute: proponha valores e peça confirmação. Em pedidos de somente geração, limite-se às verificações locais que não enviem carga. Registre indisponibilidade de k6, ambiente ou dados.
 3. Confira se a carga planejada foi entregue e se as fases tiveram amostras adequadas. Falta de dados não deve ser interpretada como aprovação.
 4. Documente comandos, variáveis, requisitos relacionados, significado dos thresholds, coleta de evidências e limitações.
 5. Preserve o código de saída do k6; não o mascare para converter reprovação em sucesso de pipeline.
