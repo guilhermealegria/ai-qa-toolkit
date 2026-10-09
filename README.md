@@ -118,7 +118,7 @@ codex plugin marketplace remove ai-qa-toolkit-marketplace
 
 ## O que foi validado e limitações
 
-O plugin foi validado com sessões reais nos dois agentes: ativação por descrição, leitura das regras compartilhadas, encaminhamento do `qa-flow`, escopo e autorização, comportamento de cada skill e instalação a partir do GitHub. Resultados e evidências em `docs/validation-step5-results.md`.
+O plugin foi validado com sessões reais nos dois agentes: ativação por descrição, leitura das regras compartilhadas, encaminhamento do `qa-flow`, escopo e autorização, comportamento de cada skill e instalação a partir do GitHub.
 
 Limitações conhecidas:
 
@@ -139,7 +139,7 @@ plugins/ai-qa-toolkit/              o plugin: tudo o que é distribuído
 ├── .codex-plugin/plugin.json       manifesto do Codex
 ├── shared/                         regras transversais, fonte única
 └── skills/                         as seis skills
-workflows/  docs/  inputs/  examples/  AGENTS.md  CLAUDE.md   manutenção, fora do pacote
+workflows/  inputs/  examples/  AGENTS.md  CLAUDE.md   manutenção, fora do pacote
 ```
 
 O pacote é exatamente o conteúdo de `plugins/ai-qa-toolkit/` (21 arquivos). Em instalações reais a partir do GitHub, o cache de cada agente continha exatamente esses arquivos (o Claude Code acrescenta apenas um marcador interno `.in_use`).
@@ -170,7 +170,14 @@ O Codex não tem comando de validação: confira os JSON de `.codex-plugin/plugi
 
 ### Testes
 
-O roteiro de validação está em `docs/validation-step5.md` e os resultados em `docs/validation-step5-results.md`. Pendências conhecidas e decisões estão em `docs/skill-plugin-migration-diagnosis.md`.
+As notas de acompanhamento ficam na pasta local `docs/`, que não é versionada. Para repetir a validação depois de uma mudança, instale o plugin nos dois agentes e confira, em sessões novas e a partir de uma pasta fora do toolkit:
+
+- **Ativação:** cada pedido típico ativa a skill certa (análise, cenários, Playwright, desempenho, k6) e pedidos sem relação com QA não ativam nenhuma.
+- **Leitura das regras compartilhadas:** uma pergunta que dependa de `shared/` (por exemplo, as colunas do step-by-step) é respondida com leitura do arquivo no cache do agente.
+- **Autorização:** "gere apenas os cenários" não inicia automação; cenários aprovados, por si só, não autorizam implementar; "não automatize ainda" é respeitado.
+- **Carga:** pedir para executar um teste sem alvo, perfil, limites e condições de parada não executa nada e pede confirmação.
+- **Destino:** pedir arquivos sem informar onde criá-los faz o agente perguntar o destino, em vez de gravar no diretório atual.
+- **Intenção:** enviar só arquivos, ou uma mensagem vazia após "My request for Code:", faz o `qa-flow` perguntar a tarefa, sem ler o conteúdo antes.
 
 ## Licença
 

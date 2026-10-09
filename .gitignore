@@ -11,3 +11,6 @@ examples/*
 !examples/.gitkeep
 !inputs/.gitkeep
 !inputs/README.md
+
+## notas locais de acompanhamento do projeto, não versionar
+docs/**/*.md
