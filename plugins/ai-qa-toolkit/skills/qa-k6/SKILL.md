@@ -17,6 +17,12 @@ Referências desta skill, lidas somente quando necessárias:
 - [Comandos no terminal](../../shared/terminal-commands.md)
 - [Locais, artefatos, privacidade e versionamento](../../shared/artifacts-and-paths.md)
 
+## Antes de criar qualquer arquivo
+
+Confirme o destino de escrita: ele deve ter sido informado pelo usuário ou já estar definido na conversa. O diretório de trabalho atual não é um destino.
+
+Se não houver destino, pergunte onde criar o projeto (por exemplo, "Em que caminho, fora do toolkit, devo criar o projeto k6?"), apresente o conteúdo proposto na própria resposta e não tente gravar. Um ambiente somente leitura ou sem permissão de escrita não dispensa essa pergunta: primeiro peça o destino e depois, se for o caso, informe a limitação de escrita.
+
 ## Entradas e condições para implementação
 
 - Receba os requisitos, cenários, hipóteses registradas, critérios por operação e fase e o projeto de destino.
