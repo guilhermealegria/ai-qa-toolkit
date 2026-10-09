@@ -137,16 +137,18 @@ Limitações conhecidas:
 plugins/ai-qa-toolkit/              o plugin: tudo o que é distribuído
 ├── .claude-plugin/plugin.json      manifesto do Claude Code
 ├── .codex-plugin/plugin.json       manifesto do Codex
+├── LICENSE                         cópia da licença MIT, para acompanhar o pacote
 ├── shared/                         regras transversais, fonte única
 └── skills/                         as seis skills
 workflows/  inputs/  examples/  AGENTS.md  CLAUDE.md   manutenção, fora do pacote
 ```
 
-O pacote é exatamente o conteúdo de `plugins/ai-qa-toolkit/` (21 arquivos). Em instalações reais a partir do GitHub, o cache de cada agente continha exatamente esses arquivos (o Claude Code acrescenta apenas um marcador interno `.in_use`).
+O pacote é exatamente o conteúdo de `plugins/ai-qa-toolkit/` (22 arquivos). Em instalações reais a partir do GitHub, o cache de cada agente continha exatamente esses arquivos (o Claude Code acrescenta apenas um marcador interno `.in_use`).
 
 ### Regras de edição
 
 - Edite as regras transversais **somente** em `plugins/ai-qa-toolkit/shared/`; as skills as referenciam por `../../shared/<arquivo>.md`. Não copie essas regras para dentro das skills.
+- O `LICENSE` da raiz e o de `plugins/ai-qa-toolkit/` devem ser idênticos (`cmp LICENSE plugins/ai-qa-toolkit/LICENSE`): a cópia dentro do plugin é a que acompanha o pacote instalado.
 - Cada skill deve funcionar só com o que está dentro de `plugins/ai-qa-toolkit/`. Não referencie arquivos de fora dessa pasta.
 - Ao mudar uma descrição de skill, repita os testes de ativação (positivos e negativos).
 - Os agentes instalam uma cópia em cache: depois de editar localmente, atualize (veja a seção Atualização) antes de testar.
@@ -181,4 +183,4 @@ As notas de acompanhamento ficam na pasta local `docs/`, que não é versionada.
 
 ## Licença
 
-Ainda não definida. Antes de distribuir publicamente, escolha e adicione um arquivo `LICENSE`.
+[MIT](LICENSE).
