@@ -1,28 +1,25 @@
 {
-  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "ai-qa-toolkit",
   "version": "0.1.0",
   "description": "Skills de QA: análise de inputs, cenários funcionais (BDD e Xray), automação Playwright, planejamento de desempenho e scripts k6.",
   "author": { "name": "guilhermealegria" },
+  "homepage": "https://github.com/guilhermealegria/ai-qa-toolkit",
   "repository": "https://github.com/guilhermealegria/ai-qa-toolkit",
   "license": "MIT",
   "keywords": ["qa", "testes", "playwright", "k6", "xray", "bdd"],
   "skills": "./skills/",
-  "extensions": {
-    "com.openai": {
-      "interface": {
-        "displayName": "AI QA Toolkit",
-        "shortDescription": "Skills de QA: análise, cenários, Playwright, desempenho e k6.",
-        "longDescription": "Analisa requisitos, escreve cenários funcionais (BDD, step-by-step e CSV do Xray), automatiza com Playwright, planeja testes de desempenho e implementa scripts k6, com regras explícitas de escopo e autorização.",
-        "developerName": "guilhermealegria",
-        "category": "Productivity",
-        "websiteURL": "https://github.com/guilhermealegria/ai-qa-toolkit",
-        "defaultPrompt": [
-          "Analise esta user story e aponte gaps e riscos.",
-          "Escreva os cenários BDD desta história.",
-          "Quero levantar requisitos de desempenho para a busca do catálogo."
-        ]
-      }
-    }
+  "interface": {
+    "displayName": "AI QA Toolkit",
+    "shortDescription": "Skills de QA: análise, cenários, Playwright, desempenho e k6.",
+    "longDescription": "Analisa requisitos, escreve cenários funcionais (BDD, step-by-step e CSV do Xray), automatiza com Playwright, planeja testes de desempenho e implementa scripts k6, com regras explícitas de escopo e autorização.",
+    "developerName": "guilhermealegria",
+    "category": "Productivity",
+    "capabilities": [],
+    "websiteURL": "https://github.com/guilhermealegria/ai-qa-toolkit",
+    "defaultPrompt": [
+      "Analise esta user story e aponte gaps e riscos.",
+      "Escreva os cenários BDD desta história.",
+      "Quero levantar requisitos de desempenho para a busca do catálogo."
+    ]
   }
 }
