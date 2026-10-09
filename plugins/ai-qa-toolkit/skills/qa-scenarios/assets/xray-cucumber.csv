@@ -1,0 +1,7 @@
+TestID;Test type;Summary;Description;Priority;Action;Data;Expected Result;Gherkin definition;Test Repository
+CT-001;Cucumber;CT-001 - Consultar item disponível;Exemplo fictício. Origem: requisito demonstrativo CAT-01. Consultar um item pelo nome.;High;;;;"Given que o catálogo contém o item ""Caneca azul""
+When consulto o item ""Caneca azul""
+Then o resultado apresenta o item disponível";ToolkitDemo/Catalogo
+CT-002;Cucumber;CT-002 - Preservar pontuação no nome;"Exemplo fictício; origem: requisito demonstrativo CAT-02. Preservar aspas, acentos e ponto e vírgula.";Medium;;;;"Given que o catálogo contém o item 'Edição ""Especial""; azul'
+When consulto o item pelo nome completo
+Then o resultado mantém o nome 'Edição ""Especial""; azul'";ToolkitDemo/Catalogo

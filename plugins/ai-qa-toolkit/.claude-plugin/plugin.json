@@ -1,0 +1,9 @@
+{
+  "name": "ai-qa-toolkit",
+  "version": "0.1.0",
+  "description": "Skills de QA: análise de inputs, cenários funcionais (BDD e Xray), automação Playwright, planejamento de desempenho e scripts k6.",
+  "author": { "name": "guilhermealegria" },
+  "repository": "https://github.com/guilhermealegria/ai-qa-toolkit",
+  "license": "MIT",
+  "keywords": ["qa", "testes", "playwright", "k6", "xray", "bdd"]
+}

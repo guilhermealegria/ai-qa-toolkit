@@ -1,5 +1,9 @@
 ## cenários de testes nunca versionar
 generated-scenarios/**
+export.md
+
+## configuração local do Claude Code (settings, worktrees)
+.claude/
 
 ## inputs reais são temporários e podem conter dados sensíveis
 inputs/*
@@ -7,3 +11,6 @@ examples/*
 !examples/.gitkeep
 !inputs/.gitkeep
 !inputs/README.md
+
+## notas locais de acompanhamento do projeto, não versionar
+docs/**/*.md

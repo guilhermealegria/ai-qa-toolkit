@@ -1,0 +1,12 @@
+{
+  "name": "ai-qa-toolkit-marketplace",
+  "owner": { "name": "guilhermealegria" },
+  "description": "Marketplace do AI QA Toolkit: skills de QA para análise, cenários, Playwright, planejamento de desempenho e k6.",
+  "plugins": [
+    {
+      "name": "ai-qa-toolkit",
+      "source": "./plugins/ai-qa-toolkit",
+      "description": "Análise de inputs, cenários funcionais (BDD e Xray), automação Playwright, planejamento de desempenho e scripts k6."
+    }
+  ]
+}
