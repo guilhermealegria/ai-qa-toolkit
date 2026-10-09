@@ -49,7 +49,7 @@ Para um clone local: `codex plugin marketplace add <caminho-do-clone>`.
 
 ### Instalar uma versão específica
 
-Cada versão publicada tem uma tag no formato `ai-qa-toolkit--v<versão>`. Para fixar a instalação em uma delas, por exemplo a `0.1.0`:
+Cada versão publicada tem uma tag no formato `ai-qa-toolkit--v<versão>`. Para fixar a instalação em uma delas (veja as tags do repositório para as versões disponíveis), por exemplo a `0.1.0`:
 
 ```bash
 claude plugin marketplace add guilhermealegria/ai-qa-toolkit@ai-qa-toolkit--v0.1.0
@@ -66,7 +66,7 @@ claude plugin list
 codex plugin list
 ```
 
-O plugin deve aparecer como habilitado, na versão `0.1.0`.
+O plugin deve aparecer como habilitado, na versão `0.1.1` (ou na mais recente publicada).
 
 ## Uso
 
