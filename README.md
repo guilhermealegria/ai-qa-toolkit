@@ -29,12 +29,10 @@ Um plugin, `ai-qa-toolkit`, com seis skills:
 
 Requisitos: Claude Code ou Codex CLI instalado. Versões em que o plugin foi testado: Claude Code 2.1.290, 2.1.292 e 2.1.293; Codex CLI 0.155.1 e 0.160.1. Outras versões podem funcionar, mas não foram verificadas.
 
-> **Enquanto o plugin não estiver no `main`:** o plugin só existe na branch `develop`. Use `@develop` (Claude Code) e `--ref develop` (Codex), como abaixo. Depois do merge no `main`, remova esse trecho dos comandos.
-
 ### Claude Code
 
 ```bash
-claude plugin marketplace add guilhermealegria/ai-qa-toolkit@develop
+claude plugin marketplace add guilhermealegria/ai-qa-toolkit
 claude plugin install ai-qa-toolkit@ai-qa-toolkit-marketplace
 ```
 
@@ -43,11 +41,23 @@ Também é possível, dentro de uma sessão, usar `/plugin` para instalar. Para 
 ### Codex
 
 ```bash
-codex plugin marketplace add guilhermealegria/ai-qa-toolkit --ref develop
+codex plugin marketplace add guilhermealegria/ai-qa-toolkit
 codex plugin add ai-qa-toolkit@ai-qa-toolkit-marketplace
 ```
 
 Para um clone local: `codex plugin marketplace add <caminho-do-clone>`.
+
+### Instalar uma versão específica
+
+Cada versão publicada tem uma tag no formato `ai-qa-toolkit--v<versão>`. Para fixar a instalação em uma delas, por exemplo a `0.1.0`:
+
+```bash
+claude plugin marketplace add guilhermealegria/ai-qa-toolkit@ai-qa-toolkit--v0.1.0
+claude plugin install ai-qa-toolkit@ai-qa-toolkit-marketplace
+
+codex plugin marketplace add guilhermealegria/ai-qa-toolkit --ref ai-qa-toolkit--v0.1.0
+codex plugin add ai-qa-toolkit@ai-qa-toolkit-marketplace
+```
 
 ### Conferir a instalação
 
